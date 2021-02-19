@@ -16,7 +16,7 @@ export default function Input({ icon, ...props }: Props) {
   return (
     <Container>
       {icon && <Icon name={icon} color={theme.colors.icon} size={24} />}
-      <Field {...props} />
+      <Field autoCapitalize='none' {...props} />
     </Container>
   )
 }

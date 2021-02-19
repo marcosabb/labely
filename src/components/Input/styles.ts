@@ -19,7 +19,8 @@ export const Field = styled.TextInput.attrs<Props>(({ theme }) => ({
 }))<Props>`
   flex: 1;
   height: 40px;
-  padding-left: ${theme('spacing.xs')};
+  margin-left: ${theme('spacing.xs')};
+  padding: 0;
   font-family: ${theme('typography.families.regular')};
   font-size: ${theme('typography.sizes.default')};
   color: ${theme('colors.black')};

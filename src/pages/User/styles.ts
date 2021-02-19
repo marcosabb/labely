@@ -32,7 +32,7 @@ export const Field = styled.View`
   margin-bottom: ${theme('spacing.md')};
 `
 
-export const Policies = styled.View`
+export const Policies = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `

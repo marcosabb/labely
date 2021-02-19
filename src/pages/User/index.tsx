@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { ThemeContext } from 'styled-components'
 
+import { useUsers } from '../../contexts/users'
+
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
@@ -19,6 +21,8 @@ import {
 export default function Home() {
   const theme = useContext(ThemeContext)
 
+  const { fetchUser } = useUsers()
+
   const [user, setUser] = useState('')
 
   function handleChange(value: string) {
@@ -26,7 +30,7 @@ export default function Home() {
   }
 
   function handleSubmit() {
-    console.log(user)
+    fetchUser(user)
   }
 
   return (
@@ -53,7 +57,7 @@ export default function Home() {
         <Button onPress={handleSubmit}>Cadastrar</Button>
       </Form>
 
-      <Policies>
+      <Policies activeOpacity={0.8}>
         <PoliciesText>Termos de política e privacidade</PoliciesText>
       </Policies>
     </Container>

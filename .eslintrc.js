@@ -25,7 +25,8 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/prop-types': 'off',
     'react/display-name': 'off',
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    camelcase: 'off'
   },
   settings: {
     react: {
