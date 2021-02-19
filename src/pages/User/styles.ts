@@ -4,7 +4,7 @@ import { theme } from 'styled-tools'
 export const Container = styled.View`
   flex: 1;
   justify-content: space-between;
-  padding: ${theme('spacing.lg')} ${theme('spacing.xlg')};
+  padding: 0 ${theme('spacing.xlg')} ${theme('spacing.lg')};
   background-color: ${theme('colors.foreground')};
 `
 

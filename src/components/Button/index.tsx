@@ -1,16 +1,17 @@
 import React from 'react'
 import { TouchableOpacityProps } from 'react-native'
 
-import { Container, Text } from './styles'
+import { Container, Text, Loading } from './styles'
 
 export interface Props extends TouchableOpacityProps {
   children: React.ReactNode
+  loading?: boolean
 }
 
-export default function Button({ children, ...props }: Props) {
+export default function Button({ children, loading = false, ...props }: Props) {
   return (
-    <Container activeOpacity={0.8} {...props}>
-      <Text>{children}</Text>
+    <Container {...props}>
+      {loading ? <Loading size='small' /> : <Text>{children}</Text>}
     </Container>
   )
 }

@@ -21,7 +21,7 @@ import {
 export default function Home() {
   const theme = useContext(ThemeContext)
 
-  const { fetchUser } = useUsers()
+  const { fetchUser, loading } = useUsers()
 
   const [user, setUser] = useState('')
 
@@ -30,7 +30,9 @@ export default function Home() {
   }
 
   function handleSubmit() {
-    fetchUser(user)
+    if (user) {
+      fetchUser(user)
+    }
   }
 
   return (
@@ -54,10 +56,12 @@ export default function Home() {
           />
         </Field>
 
-        <Button onPress={handleSubmit}>Cadastrar</Button>
+        <Button onPress={handleSubmit} loading={loading} disabled={!user}>
+          Cadastrar
+        </Button>
       </Form>
 
-      <Policies activeOpacity={0.8}>
+      <Policies>
         <PoliciesText>Termos de política e privacidade</PoliciesText>
       </Policies>
     </Container>
