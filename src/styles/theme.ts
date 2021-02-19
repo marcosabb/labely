@@ -41,6 +41,11 @@ export default {
   },
 
   radius: {
+    sm: '4px',
     default: '8px'
+  },
+
+  borders: {
+    default: '1px solid #e5e5e5'
   }
 }
