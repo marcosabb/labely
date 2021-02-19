@@ -2,6 +2,8 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { navigationRef } from './RootNavigation'
+
 import User from '../pages/User'
 
 import theme from '../styles/theme'
@@ -25,7 +27,7 @@ const options = {
 
 export default function Routes() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={options.screenOptions}
         initialRouteName='User'
