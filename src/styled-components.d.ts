@@ -9,6 +9,7 @@ declare module 'styled-components' {
       text: string
       title: string
       icon: string
+      iconBackground: string
       white: string
       black: string
       blue: string

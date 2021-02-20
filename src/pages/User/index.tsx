@@ -20,7 +20,7 @@ import {
 
 export default function Home() {
   const navigation = useNavigation()
-  const { fetchUser, loading } = useUsers()
+  const { createUser, loading } = useUsers()
 
   const [user, setUser] = useState('')
 
@@ -31,7 +31,7 @@ export default function Home() {
   async function handleSubmit() {
     if (!user) return
 
-    await fetchUser(user)
+    await createUser(user)
     navigation.navigate('Users')
   }
 

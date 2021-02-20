@@ -14,7 +14,7 @@ jest.mock('@react-navigation/native', () => ({
 
 jest.mock('../../contexts/users', () => ({
   useUsers: () => ({
-    fetchUser: jest.fn()
+    createUser: jest.fn()
   })
 }))
 

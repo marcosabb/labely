@@ -7,6 +7,7 @@ export default {
     text: '#7e7e7e',
     title: '#000',
     icon: '#e5e5e5',
+    iconBackground: '#e8e8e8',
 
     white: '#fff',
     black: '#000',

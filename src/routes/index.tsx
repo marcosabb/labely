@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import User from '../pages/User'
+import Users from '../pages/Users'
 
 import theme from '../styles/theme'
 
@@ -17,9 +18,7 @@ const options = {
   },
 
   pages: {
-    user: {
-      title: ''
-    }
+    title: ''
   }
 }
 
@@ -30,11 +29,8 @@ export default function Routes() {
         screenOptions={options.screenOptions}
         initialRouteName='User'
       >
-        <Stack.Screen
-          name='User'
-          component={User}
-          options={options.pages.user}
-        />
+        <Stack.Screen name='User' component={User} options={options.pages} />
+        <Stack.Screen name='Users' component={Users} options={options.pages} />
       </Stack.Navigator>
     </NavigationContainer>
   )

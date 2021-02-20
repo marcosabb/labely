@@ -24,6 +24,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 'off',
+    'react/no-unused-prop-types': 'off',
     'react/display-name': 'off',
     'no-use-before-define': 'off',
     camelcase: 'off'
