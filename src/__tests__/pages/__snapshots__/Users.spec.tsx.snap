@@ -67,7 +67,7 @@ exports[`Users page should match snapshot 1`] = `
       >
         <View
           accessible={true}
-          focusable={false}
+          focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -87,6 +87,7 @@ exports[`Users page should match snapshot 1`] = `
               "paddingTop": 32,
             }
           }
+          testID="item-container"
         >
           <View
             style={
@@ -201,6 +202,7 @@ exports[`Users page should match snapshot 1`] = `
                       "width": 24,
                     }
                   }
+                  testID="delete-button"
                 >
                   <Text
                     allowFontScaling={false}

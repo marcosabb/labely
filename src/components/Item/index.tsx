@@ -30,6 +30,7 @@ interface Props {
   avatar?: string
   tags: Tag[]
   loading: boolean
+  onPress: () => void
   onRemove: () => void
 }
 
@@ -39,10 +40,11 @@ export default function Item({
   avatar,
   tags,
   loading,
+  onPress,
   onRemove
 }: Props) {
   return (
-    <Container>
+    <Container onPress={onPress} testID='item-container'>
       <Details>
         {avatar && <Avatar source={{ uri: avatar }} />}
 
@@ -54,7 +56,7 @@ export default function Item({
             <ArrowIcon />
 
             {onRemove && (
-              <DeleteButton onPress={onRemove}>
+              <DeleteButton onPress={onRemove} testID='delete-button'>
                 {loading ? <Loading size='small' /> : <TrashIcon />}
               </DeleteButton>
             )}

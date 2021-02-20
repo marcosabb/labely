@@ -18,8 +18,12 @@ export default function Users() {
 
   const [userId, setUserId] = useState<number>()
 
-  const handleNavigate = useCallback(() => {
+  const handleNavigateToUser = useCallback(() => {
     navigate('User', { isCreating: true })
+  }, [navigate])
+
+  const handleNavigateToRepos = useCallback(() => {
+    navigate('Repos')
   }, [navigate])
 
   useEffect(() => {
@@ -32,13 +36,17 @@ export default function Users() {
 
       headerRight: () => (
         <HeaderRight>
-          <Button size='small' testID='header-button' onPress={handleNavigate}>
+          <Button
+            size='small'
+            testID='header-button'
+            onPress={handleNavigateToUser}
+          >
             Adicionar novo
           </Button>
         </HeaderRight>
       )
     })
-  }, [handleNavigate, setOptions])
+  }, [handleNavigateToUser, setOptions])
 
   const handleRemove = useCallback(
     async (id: number) => {
@@ -80,6 +88,7 @@ export default function Users() {
         avatar={avatar_url}
         tags={tags}
         loading={userId === id && loading.actions}
+        onPress={handleNavigateToRepos}
         onRemove={() => handleRemove(id)}
       />
     )

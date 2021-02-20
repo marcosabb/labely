@@ -1,10 +1,12 @@
 import React from 'react'
+import { fireEvent } from '@testing-library/react-native'
 
 import { render } from '../../utils/tests'
 
 import Users from '../../pages/Users'
 
 const mockedNavigate = jest.fn()
+const mockedDeleteUser = jest.fn()
 
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({
@@ -27,7 +29,9 @@ jest.mock('../../contexts/users', () => ({
         location: 'Brasília, Brazil',
         starred: 30
       }
-    ]
+    ],
+    deleteUser: mockedDeleteUser,
+    loading: {}
   })
 }))
 
@@ -44,5 +48,25 @@ describe('Users page', () => {
     const title = getByTestId('item-title')
 
     expect(title).toBeTruthy()
+  })
+
+  it('should be able to remove user', () => {
+    const { getByTestId } = render(<Users />)
+
+    const button = getByTestId('delete-button')
+
+    fireEvent.press(button)
+
+    expect(mockedDeleteUser).toHaveBeenCalledWith(56012991)
+  })
+
+  it('should be able to navigate to repos page when click item', () => {
+    const { getByTestId } = render(<Users />)
+
+    const item = getByTestId('item-container')
+
+    fireEvent.press(item)
+
+    expect(mockedNavigate).toHaveBeenCalledWith('Repos')
   })
 })
