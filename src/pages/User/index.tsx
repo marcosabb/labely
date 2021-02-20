@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 
 import { useUsers } from '../../contexts/users'
+import { RootStackParamList } from '../../routes'
 
 import Input from '../../components/Input'
 import Button from '../../components/Button'
@@ -19,7 +20,8 @@ import {
 } from './styles'
 
 export default function Home() {
-  const navigation = useNavigation()
+  const { navigate } = useNavigation()
+  const { params } = useRoute<RouteProp<RootStackParamList, 'User'>>()
   const { createUser, loading } = useUsers()
 
   const [user, setUser] = useState('')
@@ -32,8 +34,8 @@ export default function Home() {
     if (!user) return
 
     await createUser(user)
-    navigation.navigate('Users')
-  }, [createUser, navigation, user])
+    navigate('Users')
+  }, [createUser, navigate, user])
 
   return (
     <Container>
@@ -44,7 +46,9 @@ export default function Home() {
       <Form>
         <Title>Buscar usuário</Title>
         <Description>
-          Crie sua conta através do seu usuário do GitHub
+          {params.isCreating
+            ? 'Adicione seus novos usuários do GitHub'
+            : 'Crie sua conta através do seu usuário do GitHub'}
         </Description>
 
         <Field>
@@ -61,6 +65,7 @@ export default function Home() {
           onPress={handleSubmit}
           loading={loading.actions}
           disabled={!user}
+          size='default'
           testID='user-button'
         >
           Cadastrar

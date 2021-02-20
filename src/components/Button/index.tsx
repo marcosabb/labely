@@ -5,6 +5,7 @@ import { Container, Text, Loading } from './styles'
 
 export interface Props extends TouchableOpacityProps {
   children: React.ReactNode
+  size: 'small' | 'default'
   loading?: boolean
 }
 

@@ -183,6 +183,8 @@ exports[`Users page should match snapshot 1`] = `
           "height": 40,
           "justifyContent": "center",
           "opacity": 0.8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
         }
       }
       testID="user-button"

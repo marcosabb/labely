@@ -1,13 +1,42 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import { User, useUsers } from '../../contexts/users'
 
+import Button from '../../components/Button'
 import Item from '../../components/Item'
 
-import { Container, List } from './styles'
+import { Container, HeaderLeft, HeaderRight, GithubIcon, List } from './styles'
+
+interface RenderProps {
+  item: User
+}
 
 export default function Users() {
+  const { navigate, setOptions } = useNavigation()
   const { users, deleteUser } = useUsers()
+
+  const handleNavigate = useCallback(() => {
+    navigate('User', { isCreating: true })
+  }, [navigate])
+
+  useEffect(() => {
+    setOptions({
+      headerLeft: () => (
+        <HeaderLeft>
+          <GithubIcon />
+        </HeaderLeft>
+      ),
+
+      headerRight: () => (
+        <HeaderRight>
+          <Button size='small' onPress={handleNavigate}>
+            Adicionar novo
+          </Button>
+        </HeaderRight>
+      )
+    })
+  }, [handleNavigate, setOptions])
 
   const handleRemove = useCallback(
     async (id: number) => {
@@ -22,22 +51,18 @@ export default function Users() {
 
   function renderItem({
     item: { id, name, login, avatar_url, company, location, starred }
-  }: {
-    item: User
-  }) {
+  }: RenderProps) {
     function formatStarred() {
       if (starred) {
         if (starred >= 30) return `${starred}+`
 
         return starred
       }
-
-      return '-'
     }
 
     const tags = [
-      { id: 1, icon: 'business', value: company ?? '-' },
-      { id: 2, icon: 'location-on', value: location ?? '-' },
+      { id: 1, icon: 'business', value: company },
+      { id: 2, icon: 'location-on', value: location },
       {
         id: 3,
         icon: 'star',

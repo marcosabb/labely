@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import {} from 'react-native'
 
 import { useUsers } from '../contexts/users'
 
@@ -9,10 +10,18 @@ import Users from '../pages/Users'
 
 import theme from '../styles/theme'
 
-const Stack = createStackNavigator()
+export type RootStackParamList = {
+  Users: undefined
+  User: { isCreating: boolean }
+}
+
+const Stack = createStackNavigator<RootStackParamList>()
 
 const options = {
   screenOptions: {
+    headerTitleContainerStyle: {
+      padding: 16
+    },
     headerStyle: {
       backgroundColor: theme.colors.foreground,
       elevation: 0
@@ -37,7 +46,12 @@ export default function Routes() {
         screenOptions={options.screenOptions}
         initialRouteName='Users'
       >
-        <Stack.Screen name='User' component={User} options={options.pages} />
+        <Stack.Screen
+          name='User'
+          component={User}
+          options={options.pages}
+          initialParams={{ isCreating: false }}
+        />
         <Stack.Screen name='Users' component={Users} options={options.pages} />
       </Stack.Navigator>
     </NavigationContainer>

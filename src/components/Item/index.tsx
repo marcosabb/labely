@@ -20,7 +20,7 @@ import {
 interface Tag {
   id: number | string
   icon: string
-  value: number | string
+  value?: number | string
 }
 
 interface Props {
@@ -45,15 +45,16 @@ export default function Item({
 
         <Data>
           <Title>
-            <TitleText numberOfLines={1}>{title}</TitleText>
+            <TitleText numberOfLines={1}>{title ?? '-'}</TitleText>
             <ArrowIcon />
+
             {onRemove && (
               <DeleteButton>
                 <TrashIcon />
               </DeleteButton>
             )}
           </Title>
-          <Description>{description}</Description>
+          <Description>{description ?? '-'}</Description>
         </Data>
       </Details>
 
@@ -62,7 +63,7 @@ export default function Item({
           {tags.map(({ id, icon, value }) => (
             <TagItem key={id}>
               <TagIcon name={icon} />
-              <TagText>{value}</TagText>
+              <TagText>{value ?? '-'}</TagText>
             </TagItem>
           ))}
         </Tags>
