@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { theme } from 'styled-tools'
 
 export const Container = styled.View`
@@ -11,6 +12,12 @@ export const Container = styled.View`
 export const Header = styled.View`
   align-items: center;
 `
+
+export const GithubIcon = styled(Icon).attrs(({ theme }) => ({
+  name: 'github',
+  color: theme.colors.black,
+  size: 100
+}))``
 
 export const Form = styled.View``
 

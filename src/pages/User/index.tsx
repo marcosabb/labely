@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { ThemeContext } from 'styled-components'
+import React, { useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import { useUsers } from '../../contexts/users'
 
@@ -10,6 +9,7 @@ import Button from '../../components/Button'
 import {
   Container,
   Header,
+  GithubIcon,
   Form,
   Title,
   Description,
@@ -19,8 +19,7 @@ import {
 } from './styles'
 
 export default function Home() {
-  const theme = useContext(ThemeContext)
-
+  const navigation = useNavigation()
   const { fetchUser, loading } = useUsers()
 
   const [user, setUser] = useState('')
@@ -29,16 +28,17 @@ export default function Home() {
     setUser(value)
   }
 
-  function handleSubmit() {
-    if (user) {
-      fetchUser(user)
-    }
+  async function handleSubmit() {
+    if (!user) return
+
+    await fetchUser(user)
+    navigation.navigate('Users')
   }
 
   return (
     <Container>
       <Header>
-        <Icon name='github' color={theme.colors.black} size={100} />
+        <GithubIcon />
       </Header>
 
       <Form>
@@ -53,10 +53,16 @@ export default function Home() {
             placeholder='Digite o usuário'
             icon='account-circle'
             onChangeText={handleChange}
+            testID='user-input'
           />
         </Field>
 
-        <Button onPress={handleSubmit} loading={loading} disabled={!user}>
+        <Button
+          onPress={handleSubmit}
+          loading={loading}
+          disabled={!user}
+          testID='user-button'
+        >
           Cadastrar
         </Button>
       </Form>

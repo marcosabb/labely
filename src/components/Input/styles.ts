@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import { theme } from 'styled-tools'
 
 import { Props } from '../Input'
@@ -25,3 +26,8 @@ export const Field = styled.TextInput.attrs<Props>(({ theme }) => ({
   font-size: ${theme('typography.sizes.default')};
   color: ${theme('colors.black')};
 `
+
+export const FieldIcon = styled(Icon).attrs(({ theme }) => ({
+  color: theme.colors.icon,
+  size: 24
+}))``

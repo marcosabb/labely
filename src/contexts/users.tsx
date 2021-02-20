@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 import api from '../services/api'
-import { navigate } from '../routes/RootNavigation'
 
 interface Props {
   children: React.ReactNode
@@ -65,8 +64,6 @@ export default function UsersProvider({ children }: Props) {
       }
 
       storeUser(user)
-
-      navigate('Users')
 
       setLoading(false)
     } catch (error) {

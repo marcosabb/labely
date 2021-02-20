@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Users page should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "paddingBottom": 32,
+        "paddingLeft": 40,
+        "paddingRight": 40,
+        "paddingTop": 0,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+        },
+      ]
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontSize": 100,
+          },
+          Array [
+            Object {},
+          ],
+          Object {
+            "fontFamily": "Material Design Icons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      󰊤
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontFamily": "Mulish-Bold",
+            "fontSize": 22,
+            "marginBottom": 10,
+          },
+        ]
+      }
+    >
+      Buscar usuário
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#7e7e7e",
+            "fontFamily": "Mulish-Regular",
+            "fontSize": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      Crie sua conta através do seu usuário do GitHub
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#fff",
+              "borderColor": "#e5e5e5",
+              "borderRadius": 4,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "height": 40,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "#e5e5e5",
+                "fontSize": 24,
+              },
+              Array [
+                Object {},
+              ],
+              Object {
+                "fontFamily": "Material Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <TextInput
+          allowFontScaling={true}
+          autoCapitalize="none"
+          name="user"
+          onChangeText={[Function]}
+          placeholder="Digite o usuário"
+          placeholderTextColor="#7e7e7e"
+          rejectResponderTermination={true}
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "fontFamily": "Mulish-Regular",
+                "fontSize": 16,
+                "height": 40,
+                "marginLeft": 8,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="user-input"
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#000",
+          "borderRadius": 100,
+          "height": 40,
+          "justifyContent": "center",
+          "opacity": 0.8,
+        }
+      }
+      testID="user-button"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#fff",
+              "fontFamily": "Mulish-Regular",
+              "fontSize": 16,
+            },
+          ]
+        }
+      >
+        Cadastrar
+      </Text>
+    </View>
+  </View>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#7e7e7e",
+            "fontFamily": "Mulish-Regular",
+            "fontSize": 16,
+          },
+        ]
+      }
+    >
+      Termos de política e privacidade
+    </Text>
+  </View>
+</View>
+`;
