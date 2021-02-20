@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 import { User, useUsers } from '../../contexts/users'
@@ -14,7 +14,9 @@ interface RenderProps {
 
 export default function Users() {
   const { navigate, setOptions } = useNavigation()
-  const { users, deleteUser } = useUsers()
+  const { users, loading, deleteUser } = useUsers()
+
+  const [userId, setUserId] = useState<number>()
 
   const handleNavigate = useCallback(() => {
     navigate('User', { isCreating: true })
@@ -40,6 +42,7 @@ export default function Users() {
 
   const handleRemove = useCallback(
     async (id: number) => {
+      setUserId(id)
       await deleteUser(id)
     },
     [deleteUser]
@@ -76,6 +79,7 @@ export default function Users() {
         description={`@${login}`}
         avatar={avatar_url}
         tags={tags}
+        loading={userId === id && loading.actions}
         onRemove={() => handleRemove(id)}
       />
     )

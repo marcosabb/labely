@@ -90,3 +90,7 @@ export const TagIcon = styled(Icon).attrs(({ theme }) => ({
 }))`
   margin-right: ${theme('spacing.xxs')};
 `
+
+export const Loading = styled.ActivityIndicator.attrs(({ theme }) => ({
+  color: theme.colors.black
+}))``

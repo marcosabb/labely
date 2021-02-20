@@ -182,7 +182,7 @@ exports[`Users page should match snapshot 1`] = `
                 </Text>
                 <View
                   accessible={true}
-                  focusable={false}
+                  focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}

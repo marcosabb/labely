@@ -14,7 +14,8 @@ import {
   Tags,
   TagItem,
   TagText,
-  TagIcon
+  TagIcon,
+  Loading
 } from './styles'
 
 interface Tag {
@@ -28,6 +29,7 @@ interface Props {
   description: string
   avatar?: string
   tags: Tag[]
+  loading: boolean
   onRemove: () => void
 }
 
@@ -36,6 +38,7 @@ export default function Item({
   description,
   avatar,
   tags,
+  loading,
   onRemove
 }: Props) {
   return (
@@ -51,8 +54,8 @@ export default function Item({
             <ArrowIcon />
 
             {onRemove && (
-              <DeleteButton>
-                <TrashIcon />
+              <DeleteButton onPress={onRemove}>
+                {loading ? <Loading size='small' /> : <TrashIcon />}
               </DeleteButton>
             )}
           </Title>
