@@ -18,6 +18,16 @@ jest.mock('@react-navigation/native', () => ({
 
 jest.mock('../../contexts/users', () => ({
   useUsers: () => ({
+    users: [
+      {
+        id: 56012991,
+        name: 'Marcos Borges',
+        avatar_url: 'https://avatars.githubusercontent.com/u/56012991?v=4',
+        login: 'marcosabb',
+        company: 'Incentivar.io',
+        location: 'Brasília, Brazil'
+      }
+    ],
     loading: {},
     createUser: jest.fn()
   })

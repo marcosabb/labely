@@ -7,12 +7,14 @@ import { useUsers } from '../contexts/users'
 
 import User from '../pages/User'
 import Users from '../pages/Users'
+import Repositories from '../pages/Repositories'
 
 import theme from '../styles/theme'
 
 export type RootStackParamList = {
-  Users: undefined
   User: { isCreating: boolean }
+  Users: undefined
+  Repositories: { login: string }
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -63,6 +65,11 @@ export default function Routes() {
           initialParams={{ isCreating: false }}
         />
         <Stack.Screen name='Users' component={Users} options={options.pages} />
+        <Stack.Screen
+          name='Repositories'
+          component={Repositories}
+          options={options.pages}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

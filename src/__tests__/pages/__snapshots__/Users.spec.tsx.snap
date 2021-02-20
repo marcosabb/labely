@@ -147,7 +147,7 @@ exports[`Users page should match snapshot 1`] = `
                         "fontSize": 16,
                         "marginBottom": 10,
                         "marginRight": 10,
-                        "width": "50%",
+                        "maxWidth": "50%",
                       },
                     ]
                   }
@@ -210,7 +210,7 @@ exports[`Users page should match snapshot 1`] = `
                       Array [
                         Object {
                           "color": "#000",
-                          "fontSize": 18,
+                          "fontSize": 16,
                         },
                         Array [
                           Object {},
@@ -229,6 +229,7 @@ exports[`Users page should match snapshot 1`] = `
                 </View>
               </View>
               <Text
+                numberOfLines={2}
                 style={
                   Array [
                     Object {
@@ -348,55 +349,6 @@ exports[`Users page should match snapshot 1`] = `
                 }
               >
                 Brasília, Brazil
-              </Text>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginRight": 16,
-                  },
-                ]
-              }
-            >
-              <Text
-                allowFontScaling={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "#e5e5e5",
-                      "fontSize": 16,
-                    },
-                    Array [
-                      Object {
-                        "marginRight": 4,
-                      },
-                    ],
-                    Object {
-                      "fontFamily": "Material Icons",
-                      "fontStyle": "normal",
-                      "fontWeight": "normal",
-                    },
-                    Object {},
-                  ]
-                }
-              >
-                
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#7e7e7e",
-                      "fontFamily": "Mulish-Regular",
-                      "fontSize": 12,
-                    },
-                  ]
-                }
-              >
-                30+
               </Text>
             </View>
           </View>

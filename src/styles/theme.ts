@@ -11,6 +11,7 @@ export default {
 
     white: '#fff',
     black: '#000',
+    alphaBlack: rgba('#000', 0.08),
     blue: '#0017ff',
     yellow: '#ffc700',
     alphaYellow: rgba('#ffc700', 0.16)

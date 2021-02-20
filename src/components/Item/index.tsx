@@ -11,12 +11,22 @@ import {
   ArrowIcon,
   DeleteButton,
   TrashIcon,
+  Star,
+  StarIcon,
+  Labels,
+  LabelItem,
+  LabelText,
   Tags,
   TagItem,
   TagText,
   TagIcon,
   Loading
 } from './styles'
+
+interface Label {
+  id: number | string
+  value?: number | string
+}
 
 interface Tag {
   id: number | string
@@ -28,18 +38,22 @@ interface Props {
   title: string
   description: string
   avatar?: string
+  labels?: Label[]
   tags: Tag[]
-  loading: boolean
-  onPress: () => void
-  onRemove: () => void
+  highlight?: boolean
+  loading?: boolean
+  onPress?: () => void
+  onRemove?: () => void
 }
 
 export default function Item({
   title,
   description,
   avatar,
+  labels,
   tags,
   loading,
+  highlight,
   onPress,
   onRemove
 }: Props) {
@@ -60,10 +74,26 @@ export default function Item({
                 {loading ? <Loading size='small' /> : <TrashIcon />}
               </DeleteButton>
             )}
+
+            {highlight && (
+              <Star>
+                <StarIcon />
+              </Star>
+            )}
           </Title>
-          <Description>{description ?? '-'}</Description>
+          <Description numberOfLines={2}>{description ?? '-'}</Description>
         </Data>
       </Details>
+
+      {!!labels && labels.length > 0 && (
+        <Labels>
+          {tags.map(({ id, value }) => (
+            <LabelItem key={id}>
+              <LabelText>{value ?? '-'}</LabelText>
+            </LabelItem>
+          ))}
+        </Labels>
+      )}
 
       {!!tags && tags.length > 0 && (
         <Tags>

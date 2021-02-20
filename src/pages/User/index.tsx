@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react'
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 
 import { useUsers } from '../../contexts/users'
+import { useRepositories } from '../../contexts/repositories'
+
 import { RootStackParamList } from '../../routes'
 
 import Input from '../../components/Input'
@@ -22,7 +24,8 @@ import {
 export default function Home() {
   const { navigate } = useNavigation()
   const { params } = useRoute<RouteProp<RootStackParamList, 'User'>>()
-  const { createUser, loading } = useUsers()
+  const { users, createUser, loading: loadingUsers } = useUsers()
+  const { createRepositories, loading: loadingRepositories } = useRepositories()
 
   const [user, setUser] = useState('')
 
@@ -33,11 +36,20 @@ export default function Home() {
   const handleSubmit = useCallback(async () => {
     if (!user) return
 
+    const userExists = users.some((current) => current.login === user)
+
+    if (userExists) {
+      navigate('Users')
+
+      return
+    }
+
     await createUser(user)
+    await createRepositories(user)
 
     setUser('')
     navigate('Users')
-  }, [createUser, navigate, user])
+  }, [createRepositories, createUser, navigate, user, users])
 
   return (
     <Container>
@@ -66,7 +78,7 @@ export default function Home() {
 
         <Button
           onPress={handleSubmit}
-          loading={loading.actions}
+          loading={loadingUsers.actions || loadingRepositories.actions}
           disabled={!user}
           size='default'
           testID='user-button'

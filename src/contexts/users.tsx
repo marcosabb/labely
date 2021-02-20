@@ -14,7 +14,6 @@ export interface User {
   login: string
   company?: string
   location?: string
-  starred?: number
 }
 
 interface UsersContextProps {
@@ -73,19 +72,15 @@ export default function UsersProvider({ children }: Props) {
         actions: true
       }))
 
-      const { data: userResponse } = await github.get(`users/${login}`)
-      const { data: starredResponse } = await github.get(
-        `users/${login}/starred`
-      )
+      const { data: response } = await github.get(`users/${login}`)
 
       const data = {
-        id: userResponse.id,
-        name: userResponse.name,
-        avatar_url: userResponse.avatar_url,
-        login: userResponse.login,
-        company: userResponse.company,
-        location: userResponse.location,
-        starred: starredResponse.length
+        id: response.id,
+        name: response.name,
+        avatar_url: response.avatar_url,
+        login: response.login,
+        company: response.company,
+        location: response.location
       }
 
       const { data: user } = await api.post('users', data)

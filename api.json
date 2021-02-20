@@ -6,8 +6,315 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/56012991?v=4",
       "login": "marcosabb",
       "company": "Incentivar.io",
-      "location": "Brasília, Brazil",
-      "starred": 30
+      "location": "Brasília, Brazil"
+    }
+  ],
+  "repositories": [
+    {
+      "login": "marcosabb",
+      "repositories": [
+        {
+          "login": "marcosabb",
+          "id": 76504246,
+          "name": "metro",
+          "description": "🚇 The JavaScript bundler for React Native.",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 3955,
+          "updated_at": "2021-02-20T17:00:07Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 41523595,
+          "name": "react-joyride",
+          "description": "Create guided tours in your apps",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 3554,
+          "updated_at": "2021-02-19T21:27:39Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 202890778,
+          "name": "chakra-ui",
+          "description": "⚡️ Simple, Modular & Accessible UI Components for your React Applications",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 15502,
+          "updated_at": "2021-02-20T22:31:20Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 84590465,
+          "name": "vagas",
+          "description": "Espaço para divulgação de vagas relacionadas com React",
+          "labels": [],
+          "language": null,
+          "stargazers_count": 1635,
+          "updated_at": "2021-02-20T20:36:48Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 130961487,
+          "name": "react-native-reanimated",
+          "description": "React Native's Animated library reimplemented",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 4340,
+          "updated_at": "2021-02-20T20:14:43Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 47116945,
+          "name": "cep-promise",
+          "description": "Busca por CEP integrado diretamente aos serviços dos Correios, ViaCEP e outros (Node.js e Browser)",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 2257,
+          "updated_at": "2021-02-19T19:22:40Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 111529249,
+          "name": "react-native-size-matters",
+          "description": "A React-Native utility belt for scaling the size of your apps UI across different sized devices.",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 1383,
+          "updated_at": "2021-02-20T12:11:42Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 24278976,
+          "name": "react-modal",
+          "description": "Accessible modal dialog component for React",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 6061,
+          "updated_at": "2021-02-19T16:50:09Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 308474700,
+          "name": "vscode-stories",
+          "description": "Stories for VSCode",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 1908,
+          "updated_at": "2021-02-18T05:32:56Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 314402658,
+          "name": "qrcode-pix",
+          "description": "Gerar QRCode com informações de pagamento utilizando o sistema PIX",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 25,
+          "updated_at": "2021-02-18T21:27:50Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 134491992,
+          "name": "react-native-navigation-bar-color",
+          "description": "React Native component to change bottom bar/navigation bar color on Android",
+          "labels": [],
+          "language": "Java",
+          "stargazers_count": 171,
+          "updated_at": "2021-02-20T22:53:11Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 29028775,
+          "name": "react-native",
+          "description": "A framework for building native apps with React.",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 93466,
+          "updated_at": "2021-02-20T21:25:14Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 309506897,
+          "name": "contrate-junior-estagio",
+          "description": null,
+          "labels": [],
+          "language": null,
+          "stargazers_count": 198,
+          "updated_at": "2021-02-19T03:00:18Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 68711006,
+          "name": "react-native-rename",
+          "description": "Rename react-native app with just one command",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 1813,
+          "updated_at": "2021-02-20T00:47:20Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 52113921,
+          "name": "draft-js",
+          "description": "A React framework for building text editors.",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 19807,
+          "updated_at": "2021-02-20T18:05:10Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 291107964,
+          "name": "vagas-junior-estagio",
+          "description": "Empresas que constantemente oferecem vagas para junior e estagiários",
+          "labels": [],
+          "language": null,
+          "stargazers_count": 1232,
+          "updated_at": "2021-02-20T19:07:43Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 29514104,
+          "name": "netlify-cms",
+          "description": "A Git-based CMS for Static Site Generators",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 13484,
+          "updated_at": "2021-02-20T18:46:58Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 122035800,
+          "name": "react-qr-scanner",
+          "description": "React component for reading QR codes using PC web camera or mobile phone camera.",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 64,
+          "updated_at": "2021-02-03T19:42:14Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 163196837,
+          "name": "react-native-tailwindcss",
+          "description": "A react-native style system based on TailwindCSS",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 399,
+          "updated_at": "2021-02-20T06:00:25Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 51575745,
+          "name": "commitlint",
+          "description": "📓 Lint commit messages",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 7467,
+          "updated_at": "2021-02-20T20:43:36Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 289337987,
+          "name": "awesome-made-by-brazilians",
+          "description": "🇧🇷 A collection of amazing open source projects built by brazilian developers",
+          "labels": [],
+          "language": null,
+          "stargazers_count": 994,
+          "updated_at": "2021-02-20T12:16:13Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 115937274,
+          "name": "redux-persist-seamless-immutable",
+          "description": "Use seamless-immutable with redux-persist v5",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 49,
+          "updated_at": "2020-07-12T19:46:31Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 121854900,
+          "name": "react-social-sharing",
+          "description": "React Implementation of @mxstbr https://sharingbuttons.io",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 159,
+          "updated_at": "2021-02-17T10:38:49Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 277165796,
+          "name": "GuiaDesenvolvedoraWeb",
+          "description": "Guia de como se tornar uma desenvolvedora front end.",
+          "labels": [],
+          "language": "HTML",
+          "stargazers_count": 239,
+          "updated_at": "2021-02-17T14:35:19Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 132473470,
+          "name": "sample-monorepo",
+          "description": "Sample monorepo setup with yarn workspaces, typescript, and lerna",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 388,
+          "updated_at": "2021-02-20T08:24:16Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 24349832,
+          "name": "yup",
+          "description": "Dead simple Object schema validation",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 12499,
+          "updated_at": "2021-02-20T22:21:20Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 124369770,
+          "name": "github-dark-theme",
+          "description": "GitHub Dark Theme - Extension for Chrome, Firefox, and Microsoft Edge",
+          "labels": [],
+          "language": "SCSS",
+          "stargazers_count": 411,
+          "updated_at": "2021-02-18T22:57:33Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 138439546,
+          "name": "react-ranger",
+          "description": "⚛️ Hooks for building range and multi-range sliders in React",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 214,
+          "updated_at": "2021-02-09T21:23:54Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 154950925,
+          "name": "react-use",
+          "description": "React Hooks — 👍",
+          "labels": [],
+          "language": "TypeScript",
+          "stargazers_count": 19798,
+          "updated_at": "2021-02-20T22:41:12Z"
+        },
+        {
+          "login": "marcosabb",
+          "id": 34230966,
+          "name": "cz-cli",
+          "description": "The commitizen command line utility. #BlackLivesMatter",
+          "labels": [],
+          "language": "JavaScript",
+          "stargazers_count": 10836,
+          "updated_at": "2021-02-20T19:07:27Z"
+        }
+      ],
+      "id": 1
     }
   ]
 }

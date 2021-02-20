@@ -31,7 +31,7 @@ export const Title = styled.View`
 `
 
 export const TitleText = styled.Text`
-  width: 50%;
+  max-width: 50%;
   margin-right: ${theme('spacing.sm')};
   margin-bottom: ${theme('spacing.sm')};
   font-family: ${theme('typography.families.bold')};
@@ -64,9 +64,46 @@ export const DeleteButton = styled.TouchableOpacity`
 
 export const TrashIcon = styled(Icon).attrs(({ theme }) => ({
   name: 'delete',
-  size: 18,
+  size: 16,
   color: theme.colors.black
 }))``
+
+export const Star = styled.View`
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: ${theme('colors.alphaYellow')};
+  border-radius: 12px;
+`
+
+export const StarIcon = styled(Icon).attrs(({ theme }) => ({
+  name: 'star',
+  size: 16,
+  color: theme.colors.yellow
+}))``
+
+export const Labels = styled.View`
+  flex-direction: row;
+  margin-bottom: ${theme('spacing.default')};
+`
+
+export const LabelItem = styled.View`
+  flex-direction: row;
+  align-items: center;
+  height: 22px;
+  margin-right: ${theme('spacing.default')};
+  padding-left: ${theme('spacing.default')};
+  padding-right: ${theme('spacing.default')};
+  background-color: ${theme('colors.alphaBlack')};
+  border-radius: 100px;
+`
+
+export const LabelText = styled.Text`
+  font-family: ${theme('typography.families.regular')};
+  font-size: ${theme('typography.sizes.xs')};
+  color: ${theme('colors.black')};
+`
 
 export const Tags = styled.View`
   flex-direction: row;

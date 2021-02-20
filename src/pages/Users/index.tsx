@@ -22,9 +22,12 @@ export default function Users() {
     navigate('User', { isCreating: true })
   }, [navigate])
 
-  const handleNavigateToRepos = useCallback(() => {
-    navigate('Repos')
-  }, [navigate])
+  const handleNavigateToRepositories = useCallback(
+    (login) => {
+      navigate('Repositories', { login })
+    },
+    [navigate]
+  )
 
   useEffect(() => {
     setOptions({
@@ -61,24 +64,11 @@ export default function Users() {
   }
 
   function renderItem({
-    item: { id, name, login, avatar_url, company, location, starred }
+    item: { id, name, login, avatar_url, company, location }
   }: RenderProps) {
-    function formatStarred() {
-      if (starred) {
-        if (starred >= 30) return `${starred}+`
-
-        return starred
-      }
-    }
-
     const tags = [
       { id: 1, icon: 'business', value: company },
-      { id: 2, icon: 'location-on', value: location },
-      {
-        id: 3,
-        icon: 'star',
-        value: formatStarred()
-      }
+      { id: 2, icon: 'location-on', value: location }
     ]
 
     return (
@@ -88,7 +78,7 @@ export default function Users() {
         avatar={avatar_url}
         tags={tags}
         loading={userId === id && loading.actions}
-        onPress={handleNavigateToRepos}
+        onPress={() => handleNavigateToRepositories(login)}
         onRemove={() => handleRemove(id)}
       />
     )

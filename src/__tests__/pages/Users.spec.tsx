@@ -67,6 +67,8 @@ describe('Users page', () => {
 
     fireEvent.press(item)
 
-    expect(mockedNavigate).toHaveBeenCalledWith('Repos')
+    expect(mockedNavigate).toHaveBeenCalledWith('Repositories', {
+      login: 'marcosabb'
+    })
   })
 })

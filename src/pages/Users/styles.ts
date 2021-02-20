@@ -1,8 +1,8 @@
 import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { theme } from 'styled-tools'
-
 import { FlatList } from 'react-native'
+
 import { User } from '../../contexts/users'
 
 export const Container = styled.View`
