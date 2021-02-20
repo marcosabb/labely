@@ -44,6 +44,42 @@
       "company": null,
       "location": null,
       "starred": 0
+    },
+    {
+      "id": 2254731,
+      "name": "Diego Fernandes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2254731?v=4",
+      "login": "diego3g",
+      "company": "@Rocketseat ",
+      "location": "Brasil",
+      "starred": 30
+    },
+    {
+      "id": 2993593,
+      "name": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2993593?v=4",
+      "login": "marcola",
+      "company": null,
+      "location": null,
+      "starred": 0
+    },
+    {
+      "id": 297,
+      "name": "Mark Josef",
+      "avatar_url": "https://avatars.githubusercontent.com/u/297?v=4",
+      "login": "mark",
+      "company": "Division by Zero, LLC",
+      "location": "Buffalo, NY",
+      "starred": 30
+    },
+    {
+      "id": 6412038,
+      "name": "React Community",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6412038?v=4",
+      "login": "reactjs",
+      "company": null,
+      "location": "Everywhere",
+      "starred": 0
     }
   ]
 }

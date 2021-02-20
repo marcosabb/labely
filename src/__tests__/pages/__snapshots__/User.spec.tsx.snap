@@ -162,6 +162,7 @@ exports[`Users page should match snapshot 1`] = `
           }
           testID="user-input"
           underlineColorAndroid="transparent"
+          value=""
         />
       </View>
     </View>

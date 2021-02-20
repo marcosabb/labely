@@ -44,7 +44,7 @@ export default function Routes() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={options.screenOptions}
-        initialRouteName='Users'
+        initialRouteName='User'
       >
         <Stack.Screen
           name='User'

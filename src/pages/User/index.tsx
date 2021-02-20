@@ -34,6 +34,8 @@ export default function Home() {
     if (!user) return
 
     await createUser(user)
+
+    setUser('')
     navigate('Users')
   }, [createUser, navigate, user])
 
@@ -54,6 +56,7 @@ export default function Home() {
         <Field>
           <Input
             name='user'
+            value={user}
             placeholder='Digite o usuário'
             icon='account-circle'
             onChangeText={handleChange}
