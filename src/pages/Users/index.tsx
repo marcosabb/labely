@@ -30,7 +30,7 @@ export default function Users() {
 
       headerRight: () => (
         <HeaderRight>
-          <Button size='small' onPress={handleNavigate}>
+          <Button size='small' testID='header-button' onPress={handleNavigate}>
             Adicionar novo
           </Button>
         </HeaderRight>

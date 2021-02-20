@@ -45,7 +45,9 @@ export default function Item({
 
         <Data>
           <Title>
-            <TitleText numberOfLines={1}>{title ?? '-'}</TitleText>
+            <TitleText numberOfLines={1} testID='item-title'>
+              {title ?? '-'}
+            </TitleText>
             <ArrowIcon />
 
             {onRemove && (
