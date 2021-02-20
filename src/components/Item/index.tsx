@@ -5,8 +5,8 @@ import {
   Details,
   Avatar,
   Data,
-  TitleWrapper,
   Title,
+  TitleText,
   Description,
   ArrowIcon,
   DeleteButton,
@@ -44,18 +44,17 @@ export default function Item({
         {avatar && <Avatar source={{ uri: avatar }} />}
 
         <Data>
-          <TitleWrapper>
-            <Title>{title}</Title>
+          <Title>
+            <TitleText numberOfLines={1}>{title}</TitleText>
             <ArrowIcon />
-          </TitleWrapper>
+            {onRemove && (
+              <DeleteButton>
+                <TrashIcon />
+              </DeleteButton>
+            )}
+          </Title>
           <Description>{description}</Description>
         </Data>
-
-        {onRemove && (
-          <DeleteButton>
-            <TrashIcon />
-          </DeleteButton>
-        )}
       </Details>
 
       {!!tags && tags.length > 0 && (

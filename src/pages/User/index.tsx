@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 import { useUsers } from '../../contexts/users'
@@ -24,16 +24,16 @@ export default function Home() {
 
   const [user, setUser] = useState('')
 
-  function handleChange(value: string) {
+  const handleChange = useCallback((value: string) => {
     setUser(value)
-  }
+  }, [])
 
-  async function handleSubmit() {
+  const handleSubmit = useCallback(async () => {
     if (!user) return
 
     await createUser(user)
     navigation.navigate('Users')
-  }
+  }, [createUser, navigation, user])
 
   return (
     <Container>
@@ -59,7 +59,7 @@ export default function Home() {
 
         <Button
           onPress={handleSubmit}
-          loading={loading}
+          loading={loading.actions}
           disabled={!user}
           testID='user-button'
         >

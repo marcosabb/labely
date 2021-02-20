@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+
+import { useUsers } from '../contexts/users'
 
 import User from '../pages/User'
 import Users from '../pages/Users'
@@ -23,11 +25,17 @@ const options = {
 }
 
 export default function Routes() {
+  const { getUsers } = useUsers()
+
+  useEffect(() => {
+    getUsers()
+  }, [getUsers])
+
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={options.screenOptions}
-        initialRouteName='User'
+        initialRouteName='Users'
       >
         <Stack.Screen name='User' component={User} options={options.pages} />
         <Stack.Screen name='Users' component={Users} options={options.pages} />

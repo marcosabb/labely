@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { User, useUsers } from '../../contexts/users'
 
@@ -9,9 +9,12 @@ import { Container, List } from './styles'
 export default function Users() {
   const { users, deleteUser } = useUsers()
 
-  async function handleRemove(id: number) {
-    await deleteUser(id)
-  }
+  const handleRemove = useCallback(
+    async (id: number) => {
+      await deleteUser(id)
+    },
+    [deleteUser]
+  )
 
   function keyExtractor({ id }: User) {
     return String(id)

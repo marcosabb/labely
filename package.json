@@ -9,6 +9,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "server": "npx json-server --watch api.json",
     "postinstall": "npx jetify"
   },
   "dependencies": {
@@ -63,6 +64,7 @@
     "jest": "^25.1.0",
     "jest-styled-components": "^7.0.3",
     "jetifier": "^1.6.6",
+    "json-server": "^0.16.3",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"

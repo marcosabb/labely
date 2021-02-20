@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": 56012991,
+      "name": "Marcos Borges",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56012991?v=4",
+      "login": "marcosabb",
+      "company": "Incentivar.io",
+      "location": "Brasília, Brazil",
+      "starred": 30
+    },
+    {
+      "id": 181829,
+      "name": "Marcos Roberto Ferreira",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181829?v=4",
+      "login": "Marcos",
+      "company": null,
+      "location": "Florianópolis",
+      "starred": 17
+    },
+    {
+      "id": 17259768,
+      "name": "Marco Burstein",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17259768?v=4",
+      "login": "marco",
+      "company": null,
+      "location": "United States",
+      "starred": 30
+    },
+    {
+      "id": 1657688,
+      "name": "Marcos Borges",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1657688?v=4",
+      "login": "marcosborges",
+      "company": "RCHLO",
+      "location": "Brazil, São Paulo - SP",
+      "starred": 12
+    },
+    {
+      "id": 102812,
+      "name": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/102812?v=4",
+      "login": "react",
+      "company": null,
+      "location": null,
+      "starred": 0
+    }
+  ]
+}

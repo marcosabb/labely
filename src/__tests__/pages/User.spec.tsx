@@ -14,6 +14,7 @@ jest.mock('@react-navigation/native', () => ({
 
 jest.mock('../../contexts/users', () => ({
   useUsers: () => ({
+    loading: {},
     createUser: jest.fn()
   })
 }))
@@ -23,7 +24,7 @@ describe('Users page', () => {
     mockedNavigate.mockClear()
   })
 
-  it('should render correctly', () => {
+  it('should match snapshot', () => {
     const component = render(<User />)
 
     expect(component).toMatchSnapshot()

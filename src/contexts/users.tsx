@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useCallback, useContext, useState } from 'react'
 
 import api from '../services/api'
+import github from '../services/github'
 
 interface Props {
   children: React.ReactNode
@@ -19,107 +19,114 @@ export interface User {
 
 interface UsersContextProps {
   users: User[]
-  loading: boolean
+  loading: {
+    users: boolean
+    actions: boolean
+  }
+  getUsers: () => Promise<void> | void
   createUser: (login: string) => Promise<void> | void
   deleteUser: (id: number) => Promise<void> | void
 }
 
 const UsersContext = createContext<UsersContextProps>({
   users: [],
-  loading: false,
+  loading: {
+    users: false,
+    actions: false
+  },
+  getUsers: () => {},
   createUser: () => {},
   deleteUser: () => {}
 })
 
 export default function UsersProvider({ children }: Props) {
   const [users, setUsers] = useState<User[]>([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState({
+    users: false,
+    actions: false
+  })
 
-  useEffect(() => {
-    async function getInitialUsers() {
-      try {
-        const storedUsers = await AsyncStorage.getItem('@labely:users')
-        const currentUsers = storedUsers !== null ? JSON.parse(storedUsers) : []
+  const getUsers = useCallback(async () => {
+    try {
+      setLoading((state) => ({
+        ...state,
+        users: true
+      }))
 
-        setUsers(currentUsers)
-      } catch (error) {
-        console.log(error)
-      }
+      const { data: users } = await api.get('/users')
+
+      setUsers(users)
+    } catch (error) {
+      console.log('error', error)
+    } finally {
+      setLoading((state) => ({
+        ...state,
+        users: false
+      }))
     }
-
-    getInitialUsers()
   }, [])
 
-  async function storeUser(user: User) {
+  const createUser = useCallback(async (login: string) => {
     try {
-      const userExists = users.some((current) => current.id === user.id)
+      setLoading((state) => ({
+        ...state,
+        actions: true
+      }))
 
-      if (userExists) return
+      const { data: userResponse } = await github.get(`users/${login}`)
+      const { data: starredResponse } = await github.get(
+        `users/${login}/starred`
+      )
 
-      const storedUsers = await AsyncStorage.getItem('@labely:users')
-      const currentUsers = storedUsers !== null ? JSON.parse(storedUsers) : []
-      const updateUsers = JSON.stringify([...currentUsers, user])
-
-      await AsyncStorage.setItem('@labely:users', updateUsers)
-
-      setUsers((prevState) => [...prevState, user])
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async function createUser(login: string) {
-    try {
-      setLoading(true)
-
-      const { data } = await api.get(`users/${login}`)
-      const { data: starred } = await api.get(`users/${login}/starred`)
-
-      function formatName() {
-        if (data.name) {
-          const splited = data.name.split(' ')
-
-          if (splited.length > 2) {
-            const [name, surname] = splited
-
-            return `${name} ${surname}`
-          }
-
-          return data.name
-        }
-
-        return '-'
+      const data = {
+        id: userResponse.id,
+        name: userResponse.name,
+        avatar_url: userResponse.avatar_url,
+        login: userResponse.login,
+        company: userResponse.company,
+        location: userResponse.location,
+        starred: starredResponse.length
       }
 
-      const user = {
-        id: data.id,
-        name: formatName(),
-        avatar_url: data.avatar_url,
-        login: data.login,
-        company: data.company,
-        location: data.location,
-        starred: starred.length
-      }
+      const { data: user } = await api.post('users', data)
 
-      storeUser(user)
-
-      setLoading(false)
+      setUsers((state) => [...state, user])
     } catch (error) {
       console.log(error)
     } finally {
-      setLoading(false)
+      setLoading((state) => ({
+        ...state,
+        actions: false
+      }))
     }
-  }
+  }, [])
 
-  async function deleteUser(id: number) {
-    console.log(id)
-  }
+  const deleteUser = useCallback(async (id: number) => {
+    try {
+      setLoading((state) => ({
+        ...state,
+        actions: true
+      }))
+
+      await api.delete(`users/${id}`)
+
+      setUsers((state) => state.filter((user) => user.id !== id))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading((state) => ({
+        ...state,
+        actions: false
+      }))
+    }
+  }, [])
 
   return (
     <UsersContext.Provider
       value={{
         users,
         loading,
+        getUsers,
         createUser,
         deleteUser
       }}

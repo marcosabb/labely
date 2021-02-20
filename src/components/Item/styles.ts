@@ -26,11 +26,12 @@ export const Data = styled.View`
   justify-content: center;
 `
 
-export const TitleWrapper = styled.View`
+export const Title = styled.View`
   flex-direction: row;
 `
 
-export const Title = styled.Text`
+export const TitleText = styled.Text`
+  width: 50%;
   margin-right: ${theme('spacing.sm')};
   margin-bottom: ${theme('spacing.sm')};
   font-family: ${theme('typography.families.bold')};
@@ -48,7 +49,9 @@ export const ArrowIcon = styled(Icon).attrs(({ theme }) => ({
   name: 'keyboard-arrow-right',
   size: 24,
   color: theme.colors.black
-}))``
+}))`
+  flex: 1;
+`
 
 export const DeleteButton = styled.TouchableOpacity`
   align-items: center;
