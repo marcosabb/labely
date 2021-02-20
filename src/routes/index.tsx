@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import { ActivityIndicator } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import {} from 'react-native'
 
 import { useUsers } from '../contexts/users'
 
@@ -34,17 +34,27 @@ const options = {
 }
 
 export default function Routes() {
-  const { getUsers } = useUsers()
+  const { users, loading, getUsers } = useUsers()
 
   useEffect(() => {
     getUsers()
   }, [getUsers])
 
+  if (loading.users) {
+    return (
+      <ActivityIndicator
+        size='large'
+        color={theme.colors.black}
+        style={{ flex: 1 }}
+      />
+    )
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={options.screenOptions}
-        initialRouteName='User'
+        initialRouteName={!!users && users.length > 0 ? 'Users' : 'User'}
       >
         <Stack.Screen
           name='User'
