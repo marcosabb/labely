@@ -3,11 +3,11 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 import { formatDistance, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
-import { Repository, useRepositories } from '../../contexts/repositories'
+import { Repository, useRepositories } from 'contexts/repositories'
 
-import { RootStackParamList } from '../../routes'
+import { RootStackParamList } from 'routes'
 
-import Item from '../../components/Item'
+import Item from 'components/Item'
 import Filter from './Filter'
 
 import { Container, List, HeaderRight, Avatar, Loading } from './styles'

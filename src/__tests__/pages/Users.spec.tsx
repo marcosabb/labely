@@ -1,9 +1,9 @@
 import React from 'react'
 import { fireEvent } from '@testing-library/react-native'
 
-import { render } from '../../utils/tests'
+import { render } from 'utils/tests'
 
-import Users from '../../pages/Users'
+import Users from 'pages/Users'
 
 const mockedNavigate = jest.fn()
 const mockedDeleteUser = jest.fn()

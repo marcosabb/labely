@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 import { theme } from 'styled-tools'
 import { FlatList } from 'react-native'
 
-import { Repository } from '../../contexts/repositories'
+import { Repository } from 'contexts/repositories'
 
 export const Container = styled.View`
   flex: 1;

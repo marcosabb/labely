@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import { User, useUsers } from '../../contexts/users'
+import { User, useUsers } from 'contexts/users'
 
-import Button from '../../components/Button'
-import Item from '../../components/Item'
+import Button from 'components/Button'
+import Item from 'components/Item'
 
 import { Container, HeaderLeft, HeaderRight, GithubIcon, List } from './styles'
 

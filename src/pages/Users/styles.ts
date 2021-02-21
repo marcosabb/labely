@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { theme } from 'styled-tools'
 import { FlatList } from 'react-native'
 
-import { User } from '../../contexts/users'
+import { User } from 'contexts/users'
 
 export const Container = styled.View`
   flex: 1;

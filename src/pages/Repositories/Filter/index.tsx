@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { useRepositories } from '../../../contexts/repositories'
-import { useUsers } from '../../../contexts/users'
+import { useRepositories } from 'contexts/repositories'
+import { useUsers } from 'contexts/users'
 
-import Input from '../../../components/Input'
+import Input from 'components/Input'
 
 import {
   Container,

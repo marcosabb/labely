@@ -2,7 +2,7 @@ import React from 'react'
 import { render, RenderOptions } from '@testing-library/react-native'
 import { ThemeProvider } from 'styled-components/native'
 
-import theme from '../styles/theme'
+import theme from 'styles/theme'
 
 interface Props {
   children: React.ReactNode

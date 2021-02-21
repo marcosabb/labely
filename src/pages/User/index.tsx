@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react'
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 
-import { useUsers } from '../../contexts/users'
-import { useRepositories } from '../../contexts/repositories'
+import { useUsers } from 'contexts/users'
+import { useRepositories } from 'contexts/repositories'
 
-import { RootStackParamList } from '../../routes'
+import { RootStackParamList } from 'routes'
 
-import Input from '../../components/Input'
-import Button from '../../components/Button'
+import Input from 'components/Input'
+import Button from 'components/Button'
 
 import {
   Container,

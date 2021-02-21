@@ -3,8 +3,8 @@ import { StatusBar } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTheme } from 'styled-components/native'
 
-import Input from '../../components/Input'
-import Button from '../../components/Button'
+import Input from 'components/Input'
+import Button from 'components/Button'
 
 import {
   Container,

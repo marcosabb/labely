@@ -3,14 +3,14 @@ import { ActivityIndicator } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { useUsers } from '../contexts/users'
+import { useUsers } from 'contexts/users'
 
-import User from '../pages/User'
-import Users from '../pages/Users'
-import Repositories from '../pages/Repositories'
-import Actions from '../pages/Actions'
+import User from 'pages/User'
+import Users from 'pages/Users'
+import Repositories from 'pages/Repositories'
+import Actions from 'pages/Actions'
 
-import theme from '../styles/theme'
+import theme from 'styles/theme'
 
 export type RootStackParamList = {
   User: { isCreating: boolean }

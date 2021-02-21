@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
 
-import api from '../services/api'
-import github from '../services/github'
+import api from 'services/api'
+import github from 'services/github'
 
 interface Props {
   children: React.ReactNode
