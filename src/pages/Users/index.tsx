@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 import { User, useUsers } from 'contexts/users'
+import { useRepositories } from 'contexts/repositories'
 
 import Button from 'components/Button'
 import Item from 'components/Item'
@@ -15,6 +16,7 @@ interface RenderProps {
 export default function Users() {
   const { navigate, setOptions } = useNavigation()
   const { users, loading, deleteUser, setSelectedUser } = useUsers()
+  const { deleteRepositories } = useRepositories()
 
   const [userId, setUserId] = useState<number>()
 
@@ -54,11 +56,14 @@ export default function Users() {
   }, [handleNavigateToUser, setOptions])
 
   const handleRemove = useCallback(
-    async (id: number) => {
+    async (user) => {
+      const { id, login } = user
+
       setUserId(id)
       await deleteUser(id)
+      await deleteRepositories(login)
     },
-    [deleteUser]
+    [deleteRepositories, deleteUser]
   )
 
   function keyExtractor({ id }: User) {
@@ -81,7 +86,7 @@ export default function Users() {
         tags={tags}
         loading={userId === id && loading.actions}
         onPress={() => handleNavigateToRepositories(item)}
-        onRemove={() => handleRemove(id)}
+        onRemove={() => handleRemove(item)}
       />
     )
   }

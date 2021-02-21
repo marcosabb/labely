@@ -20,17 +20,22 @@ export default function Repositories() {
   const { navigate, setOptions } = useNavigation()
   const { params } = useRoute<RouteProp<RootStackParamList, 'Repositories'>>()
 
-  const { repositories, loading, getRepositories } = useRepositories()
+  const {
+    repositories,
+    loading,
+    getRepositories,
+    setSelectedRepository
+  } = useRepositories()
 
   useEffect(() => {
-    async function getUserRepositories() {
+    async function fetchRepositories() {
       const { user } = params
       const { login } = user
 
       await getRepositories(login)
     }
 
-    getUserRepositories()
+    fetchRepositories()
   }, [getRepositories, params])
 
   useEffect(() => {
@@ -46,17 +51,28 @@ export default function Repositories() {
     })
   }, [params, setOptions])
 
-  const handleNavigateToActions = useCallback(() => {
-    navigate('Actions')
-  }, [navigate])
+  const handleNavigateToActions = useCallback(
+    (repository) => {
+      navigate('Actions')
+      setSelectedRepository(repository)
+    },
+    [navigate, setSelectedRepository]
+  )
 
   function keyExtractor({ id }: Repository) {
     return String(id)
   }
 
-  function renderItem({
-    item: { name, description, language, stargazers_count, updated_at, labels }
-  }: RenderProps) {
+  function renderItem({ item }: RenderProps) {
+    const {
+      name,
+      description,
+      language,
+      stargazers_count,
+      updated_at,
+      labels
+    } = item
+
     const tags = [
       { id: 1, icon: 'language', value: language },
       { id: 2, icon: 'star', value: stargazers_count },
@@ -75,7 +91,7 @@ export default function Repositories() {
         description={description}
         labels={labels}
         tags={tags}
-        onPress={handleNavigateToActions}
+        onPress={() => handleNavigateToActions(item)}
         highlight
       />
     )

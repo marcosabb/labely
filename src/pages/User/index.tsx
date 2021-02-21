@@ -40,6 +40,7 @@ export default function Home() {
 
     if (userExists) {
       navigate('Users')
+      setUser('')
 
       return
     }

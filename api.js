@@ -1,36 +1,27 @@
 const jsonServer = require('json-server')
 const server = jsonServer.create()
-const _ = require('lodash')
-const router = jsonServer.router('./api.json')
+const router = jsonServer.router('api.json')
 const middlewares = jsonServer.defaults()
 
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
-server.post('/repositories', (req, res) => {
-  const db = router.db
-  if (Array.isArray(req.body)) {
-    req.body.forEach((element) => {
-      insert(db, 'repositories', element)
-    })
-  } else {
-    insert(db, 'repositories', req.body)
-  }
+const { db } = router
+
+server.put('/repositories/:userId/:repositoryId', (req, res) => {
+  const { params, body } = req
+  const { userId, repositoryId } = params
+
+  const table = db.get('repositories')
+
+  table
+    .getById(userId)
+    .get('repositories')
+    .getById(repositoryId)
+    .assign(body)
+    .write()
 
   res.sendStatus(200)
-
-  function insert(db, collection, data) {
-    const table = db.get(collection)
-
-    if (_.isEmpty(table.find({ _id: data._id }).value())) {
-      table.push(data).write()
-    } else {
-      table
-        .find({ _id: data._id })
-        .assign(_.omit(data, ['_id']))
-        .write()
-    }
-  }
 })
 
 server.use(router)

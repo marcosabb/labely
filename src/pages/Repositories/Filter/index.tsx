@@ -70,7 +70,7 @@ export default function Filter() {
 
   const debounced = useDebouncedCallback(async () => {
     await filterRepositories(currentUser, filters)
-  }, 1000)
+  }, 500)
 
   const handleExpand = useCallback(
     (key: string) => {

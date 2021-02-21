@@ -97,7 +97,7 @@ export default function Item({
               </LabelItem>
             ))}
 
-          <UpdateButton onPress={() => {}}>
+          <UpdateButton onPress={onPress}>
             <PenIcon name='create' />
           </UpdateButton>
         </Labels>

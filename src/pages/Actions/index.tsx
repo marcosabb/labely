@@ -3,6 +3,8 @@ import { StatusBar } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTheme } from 'styled-components/native'
 
+import { useRepositories } from 'contexts/repositories'
+
 import Input from 'components/Input'
 import Button from 'components/Button'
 
@@ -25,10 +27,11 @@ import {
 
 export default function Actions() {
   const theme = useTheme()
-  const { setOptions } = useNavigation()
+  const { navigate, setOptions } = useNavigation()
+  const { currentRepository, loading, updateRepository } = useRepositories()
 
   const [label, setLabel] = useState('')
-  const [labels, setLabels] = useState(['Front End', 'JavaScript'])
+  const [labels, setLabels] = useState<string[]>(currentRepository.labels ?? [])
   const [suggestions] = useState(['React', 'NodeJS', 'React Native'])
 
   useEffect(() => {
@@ -44,7 +47,6 @@ export default function Actions() {
   const handleCreateLabel = useCallback(
     (suggestion?: string) => {
       if (suggestion) {
-        console.log('chegou aqui')
         setLabels((state) => [...new Set([...state, suggestion])])
         return
       }
@@ -58,6 +60,22 @@ export default function Actions() {
   const handleRemoveLabel = useCallback((label) => {
     setLabels((state) => state.filter((_, index) => index !== label))
   }, [])
+
+  const handleUpdateRepository = useCallback(async () => {
+    if (!!labels && labels.length > 0) {
+      const repository = { ...currentRepository, labels }
+      await updateRepository(
+        currentRepository.login,
+        currentRepository.id,
+        repository
+      )
+      navigate('Repositories')
+    }
+  }, [currentRepository, labels, navigate, updateRepository])
+
+  const handleCancel = useCallback(() => {
+    navigate('Repositories')
+  }, [navigate])
 
   return (
     <Container>
@@ -127,10 +145,16 @@ export default function Actions() {
         </Suggestions>
 
         <Buttons>
-          <Button kind='default' size='default' onPress={() => {}}>
+          <Button
+            kind='default'
+            size='default'
+            loading={loading.actions}
+            onPress={handleUpdateRepository}
+          >
             Salvar
           </Button>
-          <Button kind='text' size='default' onPress={() => {}}>
+
+          <Button kind='text' size='default' onPress={handleCancel}>
             Cancelar
           </Button>
         </Buttons>

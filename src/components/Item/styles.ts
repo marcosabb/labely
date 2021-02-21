@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { theme, ifProp, ifNotProp } from 'styled-tools'
+import { theme, ifProp } from 'styled-tools'
 
 interface LabelsProps {
   spacing?: boolean
@@ -87,13 +87,6 @@ export const Labels = styled.View<LabelsProps>`
   flex-direction: row;
   flex-wrap: wrap;
 
-  ${ifNotProp(
-    'spacing',
-    css`
-      align-items: baseline;
-    `
-  )}
-
   ${ifProp(
     'spacing',
     css`
@@ -125,6 +118,7 @@ export const UpdateButton = styled.TouchableOpacity`
   justify-content: center;
   width: 16px;
   height: 16px;
+  margin-top: 2px;
   background-color: ${theme('colors.blue')};
   border-radius: 8px;
 `

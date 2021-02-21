@@ -12,6 +12,7 @@ interface Props {
 export interface Repository {
   id: number
   name: string
+  login: string
   description: string
   labels: string[]
   language: string
@@ -26,43 +27,58 @@ interface Filters {
 
 interface RepositoriesContextProps {
   repositories: Repository[]
+  currentRepository: Repository
   loading: {
     repositories: boolean
     actions: boolean
   }
-  getRepositories: (login: string) => Promise<void> | void
-  createRepositories: (login: string) => Promise<void> | void
-  filterRepositories: (user: User, filters: Filters) => Promise<void> | void
+  getRepositories: (userId: string) => Promise<void> | void
+  createRepositories: (userId: string) => Promise<void> | void
+  updateRepository: (
+    userId: string,
+    repositoryId: number,
+    data: Repository
+  ) => Promise<void> | void
+  deleteRepositories: (userId: string) => Promise<void> | void
+  filterRepositories: (userId: User, filters: Filters) => Promise<void> | void
+  setSelectedRepository: (repository: Repository) => void
 }
 
 const RepositoriesContext = createContext<RepositoriesContextProps>({
   repositories: [],
+  currentRepository: {} as Repository,
   loading: {
     repositories: false,
     actions: false
   },
   getRepositories: () => {},
   createRepositories: () => {},
-  filterRepositories: () => {}
+  updateRepository: () => {},
+  deleteRepositories: () => {},
+  filterRepositories: () => {},
+  setSelectedRepository: () => {}
 })
 
 export default function RepositoriesProvider({ children }: Props) {
   const [repositories, setRepositories] = useState<Repository[]>([])
+  const [currentRepository, setCurrentRepository] = useState<Repository>(
+    {} as Repository
+  )
   const [loading, setLoading] = useState({
     repositories: false,
     actions: false
   })
 
-  const getRepositories = useCallback(async (login) => {
+  const getRepositories = useCallback(async (userId) => {
     try {
       setLoading((state) => ({
         ...state,
         repositories: true
       }))
 
-      const { data: repositories } = await api.get(
-        `/repositories/?user=${login}`
-      )
+      const {
+        data: { repositories }
+      } = await api.get(`/repositories/${userId}`)
 
       setRepositories(repositories)
     } catch (error) {
@@ -75,28 +91,28 @@ export default function RepositoriesProvider({ children }: Props) {
     }
   }, [])
 
-  const createRepositories = useCallback(async (login) => {
+  const createRepositories = useCallback(async (userId) => {
     try {
       setLoading((state) => ({
         ...state,
         actions: true
       }))
 
-      const { data: repositoriesResponse } = await github.get<Repository[]>(
-        `users/${login}/starred`
+      const { data: repositories } = await github.get<Repository[]>(
+        `users/${userId}/starred`
       )
 
-      const data = repositoriesResponse.map(
+      const data = repositories.map(
         ({
-          id,
+          id: repositoryId,
           name,
           description,
           language,
           stargazers_count,
           updated_at
         }) => ({
-          login,
-          id,
+          id: repositoryId,
+          login: userId,
           name,
           description,
           labels: [],
@@ -106,7 +122,7 @@ export default function RepositoriesProvider({ children }: Props) {
         })
       )
 
-      await api.post('/repositories', data)
+      await api.post('/repositories', { id: userId, repositories: data })
     } catch (error) {
       console.log(error)
     } finally {
@@ -117,7 +133,43 @@ export default function RepositoriesProvider({ children }: Props) {
     }
   }, [])
 
-  const filterRepositories = useCallback(async (user, filters) => {
+  const updateRepository = useCallback(async (userId, repositoryId, data) => {
+    try {
+      setLoading((state) => ({
+        ...state,
+        actions: true
+      }))
+
+      await api.put(`repositories/${userId}/${repositoryId}`, data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading((state) => ({
+        ...state,
+        actions: false
+      }))
+    }
+  }, [])
+
+  const deleteRepositories = useCallback(async (userId) => {
+    try {
+      setLoading((state) => ({
+        ...state,
+        actions: true
+      }))
+
+      await api.delete(`repositories/${userId}`)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading((state) => ({
+        ...state,
+        actions: false
+      }))
+    }
+  }, [])
+
+  const filterRepositories = useCallback(async (userId, filters) => {
     try {
       setLoading((state) => ({
         ...state,
@@ -125,13 +177,10 @@ export default function RepositoriesProvider({ children }: Props) {
       }))
 
       const { name, labels } = filters
-      const { login } = user
 
       const { data: repositories } = await api.get(
-        `repositories/?login=${login}&name_like=${name}&labels_like=${labels}`
+        `repositories/${userId}?name_like=${name}&labels_like=${labels}`
       )
-
-      console.log(repositories)
 
       setRepositories(repositories)
     } catch (error) {
@@ -144,14 +193,22 @@ export default function RepositoriesProvider({ children }: Props) {
     }
   }, [])
 
+  const setSelectedRepository = useCallback((repository) => {
+    setCurrentRepository(repository)
+  }, [])
+
   return (
     <RepositoriesContext.Provider
       value={{
         repositories,
+        currentRepository,
         loading,
         getRepositories,
         createRepositories,
-        filterRepositories
+        updateRepository,
+        deleteRepositories,
+        filterRepositories,
+        setSelectedRepository
       }}
     >
       {children}
