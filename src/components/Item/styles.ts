@@ -1,6 +1,10 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { theme } from 'styled-tools'
+import { theme, ifProp, ifNotProp } from 'styled-tools'
+
+interface LabelsProps {
+  spacing?: boolean
+}
 
 export const Container = styled.TouchableOpacity`
   margin-bottom: ${theme('spacing.xs')};
@@ -83,15 +87,30 @@ export const StarIcon = styled(Icon).attrs(({ theme }) => ({
   color: theme.colors.yellow
 }))``
 
-export const Labels = styled.View`
+export const Labels = styled.View<LabelsProps>`
   flex-direction: row;
-  margin-bottom: ${theme('spacing.default')};
+  flex-wrap: wrap;
+
+  ${ifNotProp(
+    'spacing',
+    css`
+      align-items: baseline;
+    `
+  )}
+
+  ${ifProp(
+    'spacing',
+    css`
+      margin-bottom: ${theme('spacing.default')};
+    `
+  )}
 `
 
 export const LabelItem = styled.View`
   flex-direction: row;
   align-items: center;
   height: 22px;
+  margin-bottom: ${theme('spacing.default')};
   margin-right: ${theme('spacing.default')};
   padding-left: ${theme('spacing.default')};
   padding-right: ${theme('spacing.default')};
@@ -104,6 +123,21 @@ export const LabelText = styled.Text`
   font-size: ${theme('typography.sizes.xs')};
   color: ${theme('colors.black')};
 `
+
+export const CreateButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background-color: ${theme('colors.blue')};
+  border-radius: 8px;
+`
+
+export const PenIcon = styled(Icon).attrs(({ theme }) => ({
+  name: 'create',
+  size: 10,
+  color: theme.colors.white
+}))``
 
 export const Tags = styled.View`
   flex-direction: row;

@@ -16,6 +16,8 @@ import {
   Labels,
   LabelItem,
   LabelText,
+  CreateButton,
+  PenIcon,
   Tags,
   TagItem,
   TagText,
@@ -85,13 +87,18 @@ export default function Item({
         </Data>
       </Details>
 
-      {!!labels && labels.length > 0 && (
-        <Labels>
-          {tags.map(({ id, value }) => (
-            <LabelItem key={id}>
-              <LabelText>{value ?? '-'}</LabelText>
-            </LabelItem>
-          ))}
+      {!!labels && (
+        <Labels spacing={!(labels.length > 0)}>
+          {labels.length > 0 &&
+            labels.map(({ id, value }) => (
+              <LabelItem key={id}>
+                <LabelText>{value ?? '-'}</LabelText>
+              </LabelItem>
+            ))}
+
+          <CreateButton onPress={() => {}}>
+            <PenIcon />
+          </CreateButton>
         </Labels>
       )}
 

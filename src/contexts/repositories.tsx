@@ -56,10 +56,13 @@ export default function RepositoriesProvider({ children }: Props) {
         repositories: true
       }))
 
-      const { data } = await api.get(`/repositories/?login=${login}`)
+      const { data: repositories } = await api.get(
+        `/repositories/?user=${login}`
+      )
 
-      const [response] = data
-      setRepositories(response.repositories)
+      const data = repositories[0].items
+
+      setRepositories(data)
     } catch (error) {
       console.log(error)
     } finally {
@@ -101,13 +104,13 @@ export default function RepositoriesProvider({ children }: Props) {
         })
       )
 
-      await api.post('repositories', { login, repositories: data })
+      await api.post('repositories', { user: login, items: data })
     } catch (error) {
       console.log(error)
     } finally {
       setLoading((state) => ({
         ...state,
-        actions: true
+        actions: false
       }))
     }
   }, [])
