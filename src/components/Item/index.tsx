@@ -16,7 +16,7 @@ import {
   Labels,
   LabelItem,
   LabelText,
-  CreateButton,
+  UpdateButton,
   PenIcon,
   Tags,
   TagItem,
@@ -69,17 +69,21 @@ export default function Item({
             <TitleText numberOfLines={1} testID='item-title'>
               {title ?? '-'}
             </TitleText>
-            <ArrowIcon />
+            <ArrowIcon name='keyboard-arrow-right' />
 
             {onRemove && (
               <DeleteButton onPress={onRemove} testID='delete-button'>
-                {loading ? <Loading size='small' /> : <TrashIcon />}
+                {loading ? (
+                  <Loading size='small' />
+                ) : (
+                  <TrashIcon name='delete' />
+                )}
               </DeleteButton>
             )}
 
             {highlight && (
               <Star>
-                <StarIcon />
+                <StarIcon name='star' />
               </Star>
             )}
           </Title>
@@ -96,9 +100,9 @@ export default function Item({
               </LabelItem>
             ))}
 
-          <CreateButton onPress={() => {}}>
-            <PenIcon />
-          </CreateButton>
+          <UpdateButton onPress={() => {}}>
+            <PenIcon name='create' />
+          </UpdateButton>
         </Labels>
       )}
 

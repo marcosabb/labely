@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <Container>
       <Header>
-        <GithubIcon />
+        <GithubIcon name='github' />
       </Header>
 
       <Form>
@@ -71,6 +71,7 @@ export default function Home() {
             value={user}
             placeholder='Digite o usuário'
             icon='account-circle'
+            color='secondary'
             onChangeText={handleChange}
             testID='user-input'
           />

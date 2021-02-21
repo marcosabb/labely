@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useRoute, RouteProp } from '@react-navigation/native'
-import { formatDistanceStrict, parseISO } from 'date-fns'
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
+import { formatDistance, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { Repository, useRepositories } from '../../contexts/repositories'
@@ -8,20 +8,24 @@ import { Repository, useRepositories } from '../../contexts/repositories'
 import { RootStackParamList } from '../../routes'
 
 import Item from '../../components/Item'
+import Filter from './Filter'
 
-import { Container, List } from './styles'
+import { Container, List, HeaderRight, Avatar, Loading } from './styles'
 
 interface RenderProps {
   item: Repository
 }
 
 export default function Repositories() {
+  const { setOptions } = useNavigation()
   const { params } = useRoute<RouteProp<RootStackParamList, 'Repositories'>>()
-  const { repositories, getRepositories } = useRepositories()
+
+  const { repositories, loading, getRepositories } = useRepositories()
 
   useEffect(() => {
     async function getUserRepositories() {
-      const { login } = params
+      const { user } = params
+      const { login } = user
 
       await getRepositories(login)
     }
@@ -29,27 +33,18 @@ export default function Repositories() {
     getUserRepositories()
   }, [getRepositories, params])
 
-  // useEffect(() => {
-  //   setOptions({
-  //     headerLeft: () => (
-  //       <HeaderLeft>
-  //         <GithubIcon />
-  //       </HeaderLeft>
-  //     ),
+  useEffect(() => {
+    const { user } = params
+    const { avatar_url } = user
 
-  //     headerRight: () => (
-  //       <HeaderRight>
-  //         <Button
-  //           size='small'
-  //           testID='header-button'
-  //           onPress={handleNavigateToUser}
-  //         >
-  //           Adicionar novo
-  //         </Button>
-  //       </HeaderRight>
-  //     )
-  //   })
-  // }, [handleNavigateToUser, setOptions])
+    setOptions({
+      headerRight: () => (
+        <HeaderRight>
+          <Avatar source={{ uri: avatar_url }} />
+        </HeaderRight>
+      )
+    })
+  }, [params, setOptions])
 
   function keyExtractor({ id }: Repository) {
     return String(id)
@@ -64,8 +59,7 @@ export default function Repositories() {
       {
         id: 3,
         icon: 'query-builder',
-        value: formatDistanceStrict(parseISO(updated_at), new Date(), {
-          addSuffix: true,
+        value: formatDistance(parseISO(updated_at), new Date(), {
           locale: ptBR
         })
       }
@@ -85,11 +79,17 @@ export default function Repositories() {
 
   return (
     <Container>
-      <List
-        data={repositories}
-        keyExtractor={keyExtractor}
-        renderItem={renderItem}
-      />
+      <Filter />
+
+      {loading.repositories ? (
+        <Loading size='large' />
+      ) : (
+        <List
+          data={repositories}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+        />
+      )}
     </Container>
   )
 }

@@ -13,11 +13,10 @@ export const Header = styled.View`
   align-items: center;
 `
 
-export const GithubIcon = styled(Icon).attrs(({ theme }) => ({
-  name: 'github',
-  color: theme.colors.black,
-  size: 100
-}))``
+export const GithubIcon = styled(Icon)`
+  font-size: 100px;
+  color: ${theme('colors.black')};
+`
 
 export const Form = styled.View``
 

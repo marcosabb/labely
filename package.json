@@ -9,7 +9,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "server": "npx json-server --watch api.json",
+    "server": "node api",
     "postinstall": "npx jetify"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "4",
     "lint-staged": "^10.5.4",
+    "lodash": "^4.17.21",
     "polished": "^4.1.1",
     "prettier": "^2.2.1",
     "react": "16.13.1",
@@ -34,7 +35,8 @@
     "react-native-screens": "^2.17.1",
     "react-native-vector-icons": "^8.0.0",
     "styled-components": "^5.2.1",
-    "styled-tools": "^1.7.2"
+    "styled-tools": "^1.7.2",
+    "use-debounce": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

@@ -49,12 +49,10 @@ export const Description = styled.Text`
   color: ${theme('colors.black')};
 `
 
-export const ArrowIcon = styled(Icon).attrs(({ theme }) => ({
-  name: 'keyboard-arrow-right',
-  size: 24,
-  color: theme.colors.black
-}))`
+export const ArrowIcon = styled(Icon)`
   flex: 1;
+  font-size: 24px;
+  color: ${theme('colors.black')};
 `
 
 export const DeleteButton = styled.TouchableOpacity`
@@ -62,15 +60,14 @@ export const DeleteButton = styled.TouchableOpacity`
   justify-content: center;
   width: 24px;
   height: 24px;
-  background-color: ${theme('colors.iconBackground')};
+  background-color: ${theme('colors.mediumgray')};
   border-radius: 12px;
 `
 
-export const TrashIcon = styled(Icon).attrs(({ theme }) => ({
-  name: 'delete',
-  size: 16,
-  color: theme.colors.black
-}))``
+export const TrashIcon = styled(Icon)`
+  font-size: ${theme('typography.sizes.default')};
+  color: ${theme('colors.black')};
+`
 
 export const Star = styled.View`
   align-items: center;
@@ -81,11 +78,10 @@ export const Star = styled.View`
   border-radius: 12px;
 `
 
-export const StarIcon = styled(Icon).attrs(({ theme }) => ({
-  name: 'star',
-  size: 16,
-  color: theme.colors.yellow
-}))``
+export const StarIcon = styled(Icon)`
+  font-size: ${theme('typography.sizes.default')};
+  color: ${theme('colors.yellow')};
+`
 
 export const Labels = styled.View<LabelsProps>`
   flex-direction: row;
@@ -124,7 +120,7 @@ export const LabelText = styled.Text`
   color: ${theme('colors.black')};
 `
 
-export const CreateButton = styled.TouchableOpacity`
+export const UpdateButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   width: 16px;
@@ -133,11 +129,10 @@ export const CreateButton = styled.TouchableOpacity`
   border-radius: 8px;
 `
 
-export const PenIcon = styled(Icon).attrs(({ theme }) => ({
-  name: 'create',
-  size: 10,
-  color: theme.colors.white
-}))``
+export const PenIcon = styled(Icon)`
+  font-size: 10px;
+  color: ${theme('colors.white')};
+`
 
 export const Tags = styled.View`
   flex-direction: row;
@@ -155,11 +150,10 @@ export const TagText = styled.Text`
   color: ${theme('colors.text')};
 `
 
-export const TagIcon = styled(Icon).attrs(({ theme }) => ({
-  size: 16,
-  color: theme.colors.icon
-}))`
+export const TagIcon = styled(Icon)`
   margin-right: ${theme('spacing.xxs')};
+  font-size: ${theme('typography.sizes.default')};
+  color: ${theme('colors.gray')};
 `
 
 export const Loading = styled.ActivityIndicator.attrs(({ theme }) => ({

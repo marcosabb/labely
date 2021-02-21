@@ -18,6 +18,7 @@ export interface User {
 
 interface UsersContextProps {
   users: User[]
+  currentUser: User
   loading: {
     users: boolean
     actions: boolean
@@ -25,25 +26,33 @@ interface UsersContextProps {
   getUsers: () => Promise<void> | void
   createUser: (login: string) => Promise<void> | void
   deleteUser: (id: number) => Promise<void> | void
+  setSelectedUser: (user: User) => void
 }
 
 const UsersContext = createContext<UsersContextProps>({
   users: [],
+  currentUser: {} as User,
   loading: {
     users: false,
     actions: false
   },
   getUsers: () => {},
   createUser: () => {},
-  deleteUser: () => {}
+  deleteUser: () => {},
+  setSelectedUser: () => {}
 })
 
 export default function UsersProvider({ children }: Props) {
   const [users, setUsers] = useState<User[]>([])
+  const [currentUser, setCurrentUser] = useState<User>({} as User)
   const [loading, setLoading] = useState({
     users: false,
     actions: false
   })
+
+  const setSelectedUser = useCallback((user) => {
+    setCurrentUser(user)
+  }, [])
 
   const getUsers = useCallback(async () => {
     try {
@@ -120,10 +129,12 @@ export default function UsersProvider({ children }: Props) {
     <UsersContext.Provider
       value={{
         users,
+        currentUser,
         loading,
         getUsers,
         createUser,
-        deleteUser
+        deleteUser,
+        setSelectedUser
       }}
     >
       {children}

@@ -32,11 +32,14 @@ exports[`Users page should match snapshot 1`] = `
       style={
         Array [
           Object {
-            "color": "#000",
-            "fontSize": 100,
+            "color": undefined,
+            "fontSize": 12,
           },
           Array [
-            Object {},
+            Object {
+              "color": "#000",
+              "fontSize": 100,
+            },
           ],
           Object {
             "fontFamily": "Material Design Icons",
@@ -95,6 +98,16 @@ exports[`Users page should match snapshot 1`] = `
       }
     >
       <View
+        accessible={true}
+        expanded={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Array [
             Object {
@@ -104,7 +117,9 @@ exports[`Users page should match snapshot 1`] = `
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "elevation": 1,
               "flexDirection": "row",
+              "flexGrow": 1,
               "height": 40,
               "paddingLeft": 16,
               "paddingRight": 16,
@@ -117,11 +132,14 @@ exports[`Users page should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#e5e5e5",
-                "fontSize": 24,
+                "color": "secondary",
+                "fontSize": 12,
               },
               Array [
-                Object {},
+                Object {
+                  "color": "#e5e5e5",
+                  "fontSize": 24,
+                },
               ],
               Object {
                 "fontFamily": "Material Icons",

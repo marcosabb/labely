@@ -160,14 +160,16 @@ exports[`Users page should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#000",
-                        "fontSize": 24,
+                        "color": undefined,
+                        "fontSize": 12,
                       },
                       Array [
                         Object {
+                          "color": "#000",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "fontSize": 24,
                         },
                       ],
                       Object {
@@ -209,11 +211,14 @@ exports[`Users page should match snapshot 1`] = `
                     style={
                       Array [
                         Object {
-                          "color": "#000",
-                          "fontSize": 16,
+                          "color": undefined,
+                          "fontSize": 12,
                         },
                         Array [
-                          Object {},
+                          Object {
+                            "color": "#000",
+                            "fontSize": 16,
+                          },
                         ],
                         Object {
                           "fontFamily": "Material Icons",
@@ -269,11 +274,13 @@ exports[`Users page should match snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#e5e5e5",
-                      "fontSize": 16,
+                      "color": undefined,
+                      "fontSize": 12,
                     },
                     Array [
                       Object {
+                        "color": "#e5e5e5",
+                        "fontSize": 16,
                         "marginRight": 4,
                       },
                     ],
@@ -318,11 +325,13 @@ exports[`Users page should match snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#e5e5e5",
-                      "fontSize": 16,
+                      "color": undefined,
+                      "fontSize": 12,
                     },
                     Array [
                       Object {
+                        "color": "#e5e5e5",
+                        "fontSize": 16,
                         "marginRight": 4,
                       },
                     ],

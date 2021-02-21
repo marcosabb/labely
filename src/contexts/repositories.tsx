@@ -3,6 +3,8 @@ import React, { createContext, useCallback, useContext, useState } from 'react'
 import api from '../services/api'
 import github from '../services/github'
 
+import { User } from './users'
+
 interface Props {
   children: React.ReactNode
 }
@@ -22,6 +24,11 @@ export interface Repository {
   updated_at: string
 }
 
+interface Filters {
+  name: string
+  label: string
+}
+
 interface RepositoriesContextProps {
   repositories: Repository[]
   loading: {
@@ -30,6 +37,7 @@ interface RepositoriesContextProps {
   }
   getRepositories: (login: string) => Promise<void> | void
   createRepositories: (login: string) => Promise<void> | void
+  filterRepositories: (user: User, filters: Filters) => Promise<void> | void
 }
 
 const RepositoriesContext = createContext<RepositoriesContextProps>({
@@ -39,7 +47,8 @@ const RepositoriesContext = createContext<RepositoriesContextProps>({
     actions: false
   },
   getRepositories: () => {},
-  createRepositories: () => {}
+  createRepositories: () => {},
+  filterRepositories: () => {}
 })
 
 export default function RepositoriesProvider({ children }: Props) {
@@ -60,15 +69,13 @@ export default function RepositoriesProvider({ children }: Props) {
         `/repositories/?user=${login}`
       )
 
-      const data = repositories[0].items
-
-      setRepositories(data)
+      setRepositories(repositories)
     } catch (error) {
       console.log(error)
     } finally {
       setLoading((state) => ({
         ...state,
-        repositories: true
+        repositories: false
       }))
     }
   }, [])
@@ -104,7 +111,7 @@ export default function RepositoriesProvider({ children }: Props) {
         })
       )
 
-      await api.post('repositories', { user: login, items: data })
+      await api.post('/repositories', data)
     } catch (error) {
       console.log(error)
     } finally {
@@ -115,13 +122,41 @@ export default function RepositoriesProvider({ children }: Props) {
     }
   }, [])
 
+  const filterRepositories = useCallback(async (user, filters) => {
+    try {
+      setLoading((state) => ({
+        ...state,
+        repositories: true
+      }))
+
+      const { name, label } = filters
+      const { login } = user
+
+      console.log(label)
+
+      const { data: repositories } = await api.get(
+        `repositories/?login=${login}&name_like=${name}`
+      )
+
+      setRepositories(repositories)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading((state) => ({
+        ...state,
+        repositories: false
+      }))
+    }
+  }, [])
+
   return (
     <RepositoriesContext.Provider
       value={{
         repositories,
         loading,
         getRepositories,
-        createRepositories
+        createRepositories,
+        filterRepositories
       }}
     >
       {children}

@@ -14,7 +14,7 @@ import theme from '../styles/theme'
 export type RootStackParamList = {
   User: { isCreating: boolean }
   Users: undefined
-  Repositories: { login: string }
+  Repositories: { user: { login: string; avatar_url: string } }
 }
 
 const Stack = createStackNavigator<RootStackParamList>()

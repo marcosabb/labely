@@ -14,7 +14,7 @@ interface RenderProps {
 
 export default function Users() {
   const { navigate, setOptions } = useNavigation()
-  const { users, loading, deleteUser } = useUsers()
+  const { users, loading, deleteUser, setSelectedUser } = useUsers()
 
   const [userId, setUserId] = useState<number>()
 
@@ -23,17 +23,18 @@ export default function Users() {
   }, [navigate])
 
   const handleNavigateToRepositories = useCallback(
-    (login) => {
-      navigate('Repositories', { login })
+    (user) => {
+      setSelectedUser(user)
+      navigate('Repositories', { user })
     },
-    [navigate]
+    [navigate, setSelectedUser]
   )
 
   useEffect(() => {
     setOptions({
       headerLeft: () => (
         <HeaderLeft>
-          <GithubIcon />
+          <GithubIcon name='github' />
         </HeaderLeft>
       ),
 
@@ -63,9 +64,9 @@ export default function Users() {
     return String(id)
   }
 
-  function renderItem({
-    item: { id, name, login, avatar_url, company, location }
-  }: RenderProps) {
+  function renderItem({ item }: RenderProps) {
+    const { id, name, login, avatar_url, company, location } = item
+
     const tags = [
       { id: 1, icon: 'business', value: company },
       { id: 2, icon: 'location-on', value: location }
@@ -78,7 +79,7 @@ export default function Users() {
         avatar={avatar_url}
         tags={tags}
         loading={userId === id && loading.actions}
-        onPress={() => handleNavigateToRepositories(login)}
+        onPress={() => handleNavigateToRepositories(item)}
         onRemove={() => handleRemove(id)}
       />
     )

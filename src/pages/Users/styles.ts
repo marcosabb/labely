@@ -18,11 +18,10 @@ export const HeaderRight = styled.View`
   margin-right: ${theme('spacing.default')};
 `
 
-export const GithubIcon = styled(Icon).attrs(({ theme }) => ({
-  name: 'github',
-  color: theme.colors.black,
-  size: 32
-}))``
+export const GithubIcon = styled(Icon)`
+  font-size: 32px;
+  color: ${theme('colors.black')};
+`
 
 export const List = styled(FlatList as new () => FlatList<User>).attrs({
   contentContainerStyle: {

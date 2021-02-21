@@ -1,18 +1,31 @@
 import React from 'react'
 import { TextInputProps } from 'react-native'
 
-import { Container, Field, FieldIcon } from './styles'
+import { Container, Wrapper, Field, FieldIcon } from './styles'
 
 export interface Props extends TextInputProps {
   name: string
   icon?: string
+  color?: 'primary' | 'secondary'
+  expanded?: boolean
+  direction?: 'left' | 'right'
+  onExpand?: () => void
 }
 
-export default function Input({ icon, ...props }: Props) {
+export default function Input({
+  icon,
+  color,
+  expanded = true,
+  direction,
+  onExpand = () => {},
+  ...props
+}: Props) {
   return (
-    <Container>
-      {icon && <FieldIcon name={icon} />}
-      <Field autoCapitalize='none' {...props} />
+    <Container onPress={onExpand}>
+      <Wrapper expanded={expanded} direction={direction}>
+        {icon && <FieldIcon name={icon} color={color} />}
+        <Field autoCapitalize='none' {...props} />
+      </Wrapper>
     </Container>
   )
 }

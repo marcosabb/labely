@@ -8,6 +8,16 @@ import Users from '../../pages/Users'
 const mockedNavigate = jest.fn()
 const mockedDeleteUser = jest.fn()
 
+const mockedUser = {
+  id: 56012991,
+  name: 'Marcos Borges',
+  avatar_url: 'https://avatars.githubusercontent.com/u/56012991?v=4',
+  login: 'marcosabb',
+  company: 'Incentivar.io',
+  location: 'Brasília, Brazil',
+  starred: 30
+}
+
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({
     navigate: mockedNavigate,
@@ -19,18 +29,9 @@ jest.mock('@react-navigation/native', () => ({
 
 jest.mock('../../contexts/users', () => ({
   useUsers: () => ({
-    users: [
-      {
-        id: 56012991,
-        name: 'Marcos Borges',
-        avatar_url: 'https://avatars.githubusercontent.com/u/56012991?v=4',
-        login: 'marcosabb',
-        company: 'Incentivar.io',
-        location: 'Brasília, Brazil',
-        starred: 30
-      }
-    ],
+    users: [mockedUser],
     deleteUser: mockedDeleteUser,
+    setSelectedUser: jest.fn(),
     loading: {}
   })
 }))
@@ -68,7 +69,7 @@ describe('Users page', () => {
     fireEvent.press(item)
 
     expect(mockedNavigate).toHaveBeenCalledWith('Repositories', {
-      login: 'marcosabb'
+      user: mockedUser
     })
   })
 })
