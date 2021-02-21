@@ -35,7 +35,7 @@ export default function Filter() {
   const [label, setLabel] = useState('')
   const [filters, setFilters] = useState<Filters>({
     name: '',
-    labels: ['react', 'javascript']
+    labels: []
   })
   const [expanded, setExpanded] = useState<Expanded>({
     name: true,
@@ -44,10 +44,21 @@ export default function Filter() {
 
   const handleChangeLabel = useCallback((value) => {
     setLabel(value)
-    // setFilters((state) => ({
-    //   ...state,
-    //   labels: [...new Set([...state.labels, value])]
-    // }))
+  }, [])
+
+  const handleCreateLabel = useCallback(() => {
+    setLabel('')
+    setFilters((state) => ({
+      ...state,
+      labels: [...new Set([...state.labels, label])]
+    }))
+  }, [label])
+
+  const handleRemoveLabel = useCallback((label) => {
+    setFilters((state) => ({
+      ...state,
+      labels: state.labels.filter((_, index) => index !== label)
+    }))
   }, [])
 
   const handleChangeName = useCallback(async (value) => {
@@ -63,23 +74,23 @@ export default function Filter() {
 
   const handleExpand = useCallback(
     (key: string) => {
-      // const filterState = Object.keys(filters).reduce(
-      //   (total, current) => ({
-      //     ...total,
-      //     [current]: Array.isArray(current) ? [] : ''
-      //   }),
-      //   {}
-      // ) as Filters
+      const filterState = Object.keys(filters).reduce(
+        (total, current) => ({
+          ...total,
+          [current]: Array.isArray(current) ? [] : ''
+        }),
+        {}
+      ) as Filters
 
       const expandedState = Object.keys(expanded).reduce(
         (total, current) => ({ ...total, [current]: key === current }),
         {}
       ) as Expanded
 
-      // setFilters(filterState)
+      setFilters(filterState)
       setExpanded(expandedState)
     },
-    [expanded]
+    [expanded, filters]
   )
 
   return (
@@ -96,6 +107,7 @@ export default function Filter() {
           }}
           onExpand={() => {
             !expanded.name && handleExpand('name')
+            debounced.callback()
           }}
           expanded={expanded.name}
           direction={expanded.name ? 'right' : undefined}
@@ -106,12 +118,10 @@ export default function Filter() {
           value={label}
           icon='filter-list'
           color='primary'
-          onChangeText={(value) => {
-            handleChangeLabel(value)
-            // debounced.callback()
-          }}
+          onChangeText={handleChangeLabel}
           onExpand={() => {
             !expanded.label && handleExpand('label')
+            debounced.callback()
           }}
           expanded={expanded.label}
           direction={expanded.label ? 'left' : undefined}
@@ -119,21 +129,33 @@ export default function Filter() {
       </Fields>
 
       <Labels>
-        {filters.labels.map((label) => (
-          <LabelItem key={label}>
-            <LabelText numberOfLines={1}>{label}</LabelText>
+        {!!filters.labels &&
+          filters.labels.length > 0 &&
+          filters.labels.map((label, index) => (
+            <LabelItem key={label}>
+              <LabelText numberOfLines={1}>{label}</LabelText>
 
-            <DeleteButton>
-              <CloseIcon name='close' />
-            </DeleteButton>
-          </LabelItem>
-        ))}
+              <DeleteButton
+                onPress={() => {
+                  handleRemoveLabel(index)
+                  debounced.callback()
+                }}
+              >
+                <CloseIcon name='close' />
+              </DeleteButton>
+            </LabelItem>
+          ))}
 
         {!!label && (
           <LabelItem>
             <LabelText numberOfLines={1}>{label}</LabelText>
 
-            <CreateButton>
+            <CreateButton
+              onPress={() => {
+                handleCreateLabel()
+                debounced.callback()
+              }}
+            >
               <PlusIcon name='add' />
             </CreateButton>
           </LabelItem>

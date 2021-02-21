@@ -25,11 +25,6 @@ import {
   Loading
 } from './styles'
 
-interface Label {
-  id: number | string
-  value?: number | string
-}
-
 interface Tag {
   id: number | string
   icon: string
@@ -40,7 +35,7 @@ interface Props {
   title: string
   description: string
   avatar?: string
-  labels?: Label[]
+  labels?: string[]
   tags: Tag[]
   highlight?: boolean
   loading?: boolean
@@ -94,9 +89,11 @@ export default function Item({
       {!!labels && (
         <Labels spacing={!(labels.length > 0)}>
           {labels.length > 0 &&
-            labels.map(({ id, value }) => (
-              <LabelItem key={id}>
-                <LabelText numberOfLines={1}>{value ?? '-'}</LabelText>
+            labels.map((label) => (
+              <LabelItem key={label}>
+                <LabelText numberOfLines={1}>
+                  {label ? `#${label}` : '-'}
+                </LabelText>
               </LabelItem>
             ))}
 

@@ -23,7 +23,7 @@
       "id": 76504246,
       "name": "metro",
       "description": "🚇 The JavaScript bundler for React Native.",
-      "labels": [],
+      "labels": ["react", "javascript"],
       "language": "JavaScript",
       "stargazers_count": 3955,
       "updated_at": "2021-02-20T17:00:07Z"
@@ -33,7 +33,7 @@
       "id": 41523595,
       "name": "react-joyride",
       "description": "Create guided tours in your apps",
-      "labels": [],
+      "labels": ["typescript"],
       "language": "JavaScript",
       "stargazers_count": 3554,
       "updated_at": "2021-02-19T21:27:39Z"
@@ -43,7 +43,7 @@
       "id": 202890778,
       "name": "chakra-ui",
       "description": "⚡️ Simple, Modular & Accessible UI Components for your React Applications",
-      "labels": [],
+      "labels": ["ui"],
       "language": "TypeScript",
       "stargazers_count": 15504,
       "updated_at": "2021-02-21T00:33:31Z"
@@ -53,7 +53,7 @@
       "id": 84590465,
       "name": "vagas",
       "description": "Espaço para divulgação de vagas relacionadas com React",
-      "labels": [],
+      "labels": ["node", "php"],
       "language": null,
       "stargazers_count": 1636,
       "updated_at": "2021-02-21T03:29:30Z"

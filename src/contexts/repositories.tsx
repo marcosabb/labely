@@ -9,16 +9,11 @@ interface Props {
   children: React.ReactNode
 }
 
-interface Label {
-  id: number
-  value: string
-}
-
 export interface Repository {
   id: number
   name: string
   description: string
-  labels: Label[]
+  labels: string[]
   language: string
   stargazers_count: number
   updated_at: string
@@ -131,10 +126,12 @@ export default function RepositoriesProvider({ children }: Props) {
 
       const { name, labels } = filters
       const { login } = user
-      console.log(labels)
+
       const { data: repositories } = await api.get(
-        `repositories/?login=${login}&name_like=${name}`
+        `repositories/?login=${login}&name_like=${name}&labels_like=${labels}`
       )
+
+      console.log(repositories)
 
       setRepositories(repositories)
     } catch (error) {
