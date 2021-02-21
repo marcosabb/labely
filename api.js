@@ -9,10 +9,7 @@ server.use(jsonServer.bodyParser)
 
 server.post('/repositories', (req, res) => {
   const db = router.db
-  console.log('chegou aqui 1')
   if (Array.isArray(req.body)) {
-    console.log('chegou aqui 2')
-
     req.body.forEach((element) => {
       insert(db, 'repositories', element)
     })

@@ -26,7 +26,7 @@ export interface Repository {
 
 interface Filters {
   name: string
-  label: string
+  labels: string[]
 }
 
 interface RepositoriesContextProps {
@@ -129,11 +129,9 @@ export default function RepositoriesProvider({ children }: Props) {
         repositories: true
       }))
 
-      const { name, label } = filters
+      const { name, labels } = filters
       const { login } = user
-
-      console.log(label)
-
+      console.log(labels)
       const { data: repositories } = await api.get(
         `repositories/?login=${login}&name_like=${name}`
       )

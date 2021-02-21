@@ -96,7 +96,7 @@ export default function Item({
           {labels.length > 0 &&
             labels.map(({ id, value }) => (
               <LabelItem key={id}>
-                <LabelText>{value ?? '-'}</LabelText>
+                <LabelText numberOfLines={1}>{value ?? '-'}</LabelText>
               </LabelItem>
             ))}
 
