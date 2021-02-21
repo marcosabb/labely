@@ -8,10 +8,12 @@ declare module 'styled-components' {
       foreground: string
       text: string
       title: string
-      icon: string
-      iconBackground: string
+      modal: string
+      gray: string
+      mediumgray: string
       white: string
       black: string
+      alphaBlack: string
       blue: string
       yellow: string
       alphaYellow: string

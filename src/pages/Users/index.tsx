@@ -41,6 +41,7 @@ export default function Users() {
       headerRight: () => (
         <HeaderRight>
           <Button
+            kind='default'
             size='small'
             testID='header-button'
             onPress={handleNavigateToUser}

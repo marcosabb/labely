@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 import { formatDistance, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -17,7 +17,7 @@ interface RenderProps {
 }
 
 export default function Repositories() {
-  const { setOptions } = useNavigation()
+  const { navigate, setOptions } = useNavigation()
   const { params } = useRoute<RouteProp<RootStackParamList, 'Repositories'>>()
 
   const { repositories, loading, getRepositories } = useRepositories()
@@ -46,6 +46,10 @@ export default function Repositories() {
     })
   }, [params, setOptions])
 
+  const handleNavigateToActions = useCallback(() => {
+    navigate('Actions')
+  }, [navigate])
+
   function keyExtractor({ id }: Repository) {
     return String(id)
   }
@@ -71,7 +75,7 @@ export default function Repositories() {
         description={description}
         labels={labels}
         tags={tags}
-        onPress={() => {}}
+        onPress={handleNavigateToActions}
         highlight
       />
     )

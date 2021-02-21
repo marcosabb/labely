@@ -15,7 +15,6 @@ export const Wrapper = styled.View<Pick<Props, 'expanded' | 'direction'>>`
   background-color: ${theme('colors.foreground')};
   border: ${theme('borders.default')};
   border-radius: ${theme('radius.sm')};
-  elevation: 1;
 
   ${ifProp(
     'expanded',

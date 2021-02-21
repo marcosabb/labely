@@ -78,11 +78,12 @@ export default function Home() {
         </Field>
 
         <Button
+          kind='default'
+          size='default'
+          testID='user-button'
           onPress={handleSubmit}
           loading={loadingUsers.actions || loadingRepositories.actions}
           disabled={!user}
-          size='default'
-          testID='user-button'
         >
           Cadastrar
         </Button>

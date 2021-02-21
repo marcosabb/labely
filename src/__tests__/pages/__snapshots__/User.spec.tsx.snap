@@ -117,7 +117,6 @@ exports[`Users page should match snapshot 1`] = `
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
-              "elevation": 1,
               "flexDirection": "row",
               "flexGrow": 1,
               "height": 40,
@@ -209,6 +208,7 @@ exports[`Users page should match snapshot 1`] = `
       testID="user-button"
     >
       <Text
+        kind="default"
         style={
           Array [
             Object {

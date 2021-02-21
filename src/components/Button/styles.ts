@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components/native'
 import { theme, ifProp, switchProp } from 'styled-tools'
 
-export const Container = styled.TouchableOpacity`
+import { Props } from '../Button'
+
+export const Container = styled.TouchableOpacity<Props>`
   justify-content: center;
   align-items: center;
   padding-left: ${theme('spacing.md')};
   padding-right: ${theme('spacing.md')};
-  background-color: ${theme('colors.black')};
   border-radius: 100px;
 
   ${ifProp(
@@ -16,21 +17,40 @@ export const Container = styled.TouchableOpacity`
     `
   )}
 
-  ${switchProp('size', {
-    small: css`
-      height: 32px;
+  ${switchProp('kind', {
+    default: css`
+      background-color: ${theme('colors.black')};
     `,
 
+    text: css`
+      background-color: transparent;
+    `
+  })}
+
+  ${switchProp('size', {
     default: css`
       height: 40px;
+    `,
+
+    small: css`
+      height: 32px;
     `
   })}
 `
 
-export const Text = styled.Text`
+export const Text = styled.Text<Pick<Props, 'kind'>>`
   font-family: ${theme('typography.families.regular')};
   font-size: ${theme('typography.sizes.default')};
-  color: ${theme('colors.foreground')};
+
+  ${switchProp('kind', {
+    default: css`
+      color: ${theme('colors.foreground')};
+    `,
+
+    text: css`
+      color: ${theme('colors.black')};
+    `
+  })}
 `
 
 export const Loading = styled.ActivityIndicator.attrs(({ theme }) => ({
