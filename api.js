@@ -25,8 +25,6 @@ server.get('/repositories/:userId', (req, res) => {
   }
 
   if (labels) {
-    console.log(repositories[0].labels.map((label) => label.toLowerCase()))
-
     const data = repositories.filter((repository) => {
       const repositoryLabels = repository.labels.map((label) =>
         label.toLowerCase()

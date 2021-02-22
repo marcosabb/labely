@@ -65,7 +65,7 @@ export default function UsersProvider({ children }: Props) {
 
       setUsers(users)
     } catch (error) {
-      console.log('error', error)
+      console.log(error)
     } finally {
       setLoading((state) => ({
         ...state,
