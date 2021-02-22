@@ -3,8 +3,6 @@ import React, { createContext, useCallback, useContext, useState } from 'react'
 import api from 'services/api'
 import github from 'services/github'
 
-import { User } from './users'
-
 interface Props {
   children: React.ReactNode
 }
@@ -40,7 +38,7 @@ interface RepositoriesContextProps {
     data: Repository
   ) => Promise<void> | void
   deleteRepositories: (userId: string) => Promise<void> | void
-  filterRepositories: (userId: User, filters: Filters) => Promise<void> | void
+  filterRepositories: (userId: string, filters: Filters) => Promise<void> | void
   setSelectedRepository: (repository: Repository) => void
 }
 
@@ -76,9 +74,7 @@ export default function RepositoriesProvider({ children }: Props) {
         repositories: true
       }))
 
-      const {
-        data: { repositories }
-      } = await api.get(`/repositories/${userId}`)
+      const { data: repositories } = await api.get(`/repositories/${userId}`)
 
       setRepositories(repositories)
     } catch (error) {
@@ -185,7 +181,7 @@ export default function RepositoriesProvider({ children }: Props) {
       const { name, labels } = filters
 
       const { data: repositories } = await api.get(
-        `repositories/${userId}?name_like=${name}&labels_like=${labels}`
+        `repositories/${userId}/?name=${name}&labels=${labels}`
       )
 
       setRepositories(repositories)

@@ -45,6 +45,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@sinonjs/fake-timers": "^7.0.2",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-native": "^7.1.0",
     "@types/jest": "^25.2.3",

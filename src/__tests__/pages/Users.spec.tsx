@@ -22,6 +22,7 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({
     navigate: mockedNavigate,
     setOptions: () => ({
+      headerLeft: () => {},
       headerRight: () => {}
     })
   })

@@ -18,11 +18,7 @@
           "login": "marcosabb",
           "name": "metro",
           "description": "🚇 The JavaScript bundler for React Native.",
-          "labels": [
-            "React",
-            "NodeJS",
-            "React Native"
-          ],
+          "labels": [],
           "language": "JavaScript",
           "stargazers_count": 3956,
           "updated_at": "2021-02-21T11:57:39Z"
@@ -32,11 +28,7 @@
           "login": "marcosabb",
           "name": "react-joyride",
           "description": "Create guided tours in your apps",
-          "labels": [
-            "React",
-            "NodeJS",
-            "React Native"
-          ],
+          "labels": [],
           "language": "JavaScript",
           "stargazers_count": 3554,
           "updated_at": "2021-02-21T22:42:34Z"
@@ -46,9 +38,7 @@
           "login": "marcosabb",
           "name": "chakra-ui",
           "description": "⚡️ Simple, Modular & Accessible UI Components for your React Applications",
-          "labels": [
-            "React"
-          ],
+          "labels": [],
           "language": "TypeScript",
           "stargazers_count": 15518,
           "updated_at": "2021-02-21T23:35:10Z"
@@ -140,8 +130,8 @@
           "description": "A framework for building native apps with React.",
           "labels": [],
           "language": "JavaScript",
-          "stargazers_count": 93480,
-          "updated_at": "2021-02-21T19:49:12Z"
+          "stargazers_count": 93481,
+          "updated_at": "2021-02-22T01:13:45Z"
         },
         {
           "id": 309506897,
@@ -181,7 +171,7 @@
           "labels": [],
           "language": null,
           "stargazers_count": 1233,
-          "updated_at": "2021-02-21T01:51:24Z"
+          "updated_at": "2021-02-22T00:34:06Z"
         },
         {
           "id": 29514104,
@@ -190,8 +180,8 @@
           "description": "A Git-based CMS for Static Site Generators",
           "labels": [],
           "language": "JavaScript",
-          "stargazers_count": 13489,
-          "updated_at": "2021-02-21T20:15:51Z"
+          "stargazers_count": 13488,
+          "updated_at": "2021-02-22T00:00:35Z"
         },
         {
           "id": 122035800,
@@ -220,8 +210,8 @@
           "description": "📓 Lint commit messages",
           "labels": [],
           "language": "TypeScript",
-          "stargazers_count": 7476,
-          "updated_at": "2021-02-21T21:10:16Z"
+          "stargazers_count": 7477,
+          "updated_at": "2021-02-22T01:39:35Z"
         },
         {
           "id": 289337987,
@@ -310,8 +300,8 @@
           "description": "React Hooks — 👍",
           "labels": [],
           "language": "TypeScript",
-          "stargazers_count": 19809,
-          "updated_at": "2021-02-21T21:54:52Z"
+          "stargazers_count": 19810,
+          "updated_at": "2021-02-22T01:38:36Z"
         },
         {
           "id": 34230966,
@@ -320,8 +310,8 @@
           "description": "The commitizen command line utility. #BlackLivesMatter",
           "labels": [],
           "language": "JavaScript",
-          "stargazers_count": 10838,
-          "updated_at": "2021-02-21T10:45:17Z"
+          "stargazers_count": 10839,
+          "updated_at": "2021-02-22T00:24:24Z"
         }
       ]
     }

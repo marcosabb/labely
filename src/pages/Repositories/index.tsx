@@ -40,12 +40,11 @@ export default function Repositories() {
 
   useEffect(() => {
     const { user } = params
-    const { avatar_url } = user
 
     setOptions({
       headerRight: () => (
         <HeaderRight>
-          <Avatar source={{ uri: avatar_url }} />
+          <Avatar source={{ uri: user.avatar_url }} />
         </HeaderRight>
       )
     })

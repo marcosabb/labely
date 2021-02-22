@@ -21,7 +21,7 @@ import {
   PoliciesText
 } from './styles'
 
-export default function Home() {
+export default function User() {
   const { navigate } = useNavigation()
   const { params } = useRoute<RouteProp<RootStackParamList, 'User'>>()
   const { users, createUser, loading: loadingUsers } = useUsers()

@@ -8,9 +8,11 @@ const mockedNavigate = jest.fn()
 
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({
-    navigate: mockedNavigate
+    navigate: mockedNavigate,
+    setOptions: () => ({
+      headerRight: () => {}
+    })
   }),
-
   useRoute: () => ({
     params: {}
   })
