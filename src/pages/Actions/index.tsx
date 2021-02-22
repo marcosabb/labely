@@ -62,15 +62,13 @@ export default function Actions() {
   }, [])
 
   const handleUpdateRepository = useCallback(async () => {
-    if (!!labels && labels.length > 0) {
-      const repository = { ...currentRepository, labels }
-      await updateRepository(
-        currentRepository.login,
-        currentRepository.id,
-        repository
-      )
-      navigate('Repositories')
-    }
+    const repository = { ...currentRepository, labels }
+    await updateRepository(
+      currentRepository.login,
+      currentRepository.id,
+      repository
+    )
+    navigate('Repositories')
   }, [currentRepository, labels, navigate, updateRepository])
 
   const handleCancel = useCallback(() => {
