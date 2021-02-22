@@ -1,10 +1,6 @@
-import styled, { css } from 'styled-components/native'
+import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { theme, ifProp } from 'styled-tools'
-
-interface LabelsProps {
-  spacing?: boolean
-}
+import { theme } from 'styled-tools'
 
 export const Container = styled.TouchableOpacity`
   margin-bottom: ${theme('spacing.xs')};
@@ -83,16 +79,10 @@ export const StarIcon = styled(Icon)`
   color: ${theme('colors.yellow')};
 `
 
-export const Labels = styled.View<LabelsProps>`
+export const Labels = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-
-  ${ifProp(
-    'spacing',
-    css`
-      margin-bottom: ${theme('spacing.default')};
-    `
-  )}
+  margin-bottom: ${theme('spacing.default')};
 `
 
 export const LabelItem = styled.View`

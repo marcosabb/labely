@@ -87,7 +87,7 @@ export default function Item({
       </Details>
 
       {!!labels && (
-        <Labels spacing={!(labels.length > 0)}>
+        <Labels>
           {labels.length > 0 &&
             labels.map((label) => (
               <LabelItem key={label}>

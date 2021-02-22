@@ -141,6 +141,12 @@ export default function RepositoriesProvider({ children }: Props) {
       }))
 
       await api.put(`repositories/${userId}/${repositoryId}`, data)
+
+      setRepositories((state) =>
+        state.map((repository) =>
+          repository.id === repositoryId ? data : repository
+        )
+      )
     } catch (error) {
       console.log(error)
     } finally {

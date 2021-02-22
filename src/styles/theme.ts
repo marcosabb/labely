@@ -7,10 +7,8 @@ export default {
     text: '#7e7e7e',
     title: '#000',
     modal: rgba('#000', 0.72),
-
     gray: '#e5e5e5',
     mediumgray: '#e8e8e8',
-
     white: '#fff',
     black: '#000',
     alphaBlack: rgba('#000', 0.08),
